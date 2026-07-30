@@ -1,0 +1,9 @@
+==================================================
+TÓM TẮT DỰ ÁN TRẮC NGHIỆM VẬT LÝ (BACKUP)
+==================================================
+- Backend: Python (FastAPI). Chạy lệnh: python3 -m uvicorn main:app --reload
+- Thư mục static: Chứa file /static/MathJax.js chạy Offline.
+- Tính năng đã có: Hiển thị công thức Lý sắc nét, chấm điểm, hiển thị lời giải chi tiết, đồng hồ đếm ngược 50 phút tự động khóa đề khi nộp bài hoặc hết giờ.
+- Trạng thái hiện tại: Đã hoàn thiện mã nguồn local, sẵn sàng đẩy lên Online (Render.com) hoặc làm trang Admin.
+==================================================
+
