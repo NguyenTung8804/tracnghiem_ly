@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Đề Số {{ de_so }} - Vietdragon Learning Center</title>
     
-    <!-- Gọi trực tiếp thư viện toán lý MathJax trực tuyến tốc độ cao -->
+    <!-- Gọi trực tiếp thư viện toán lý MathJax trực tuyến hỗ trợ đồng thời cả dấu $ và \( -->
     <script src="https://cloudflare.com" async></script>
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ 
-            tex2jax: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+        MathJax.Hub.Config({
+            tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
             showProcessingMessages: false,
             messageStyle: "none"
         });
@@ -42,7 +42,7 @@
     </div>
     <div class="container">
         <div class="header-title">
-            <h2>ĐỀ THI TỐT NGHIỆP THPT NĂM 2026 (MÔ PHỎNG)</h2>
+            <h2>HỆ THỐNG THI TRẮC NGHIỆM VẬT LÝ 2026</h2>
             <h3 style="color: var(--accent-color); margin: 5px 0;">MÔN: VẬT LÝ - ĐỀ SỐ {{ de_so }}</h3>
             <p>Thời gian làm bài: 50 phút | Ngân hàng đề cấu trúc chuẩn Bộ Giáo dục</p>
         </div>
