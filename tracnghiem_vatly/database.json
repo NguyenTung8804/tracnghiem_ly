@@ -5,10 +5,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Khi đặt vật 1 tiếp xúc nhiệt với vật 2 và có sự truyền nhiệt từ vật 1 sang vật 2, phát biểu nào sau đây là đúng?",
-    "cac_lua_chon": "Vật 2 chứa rất ít nhiệt lượng.,Vật 1 chứa nhiều nhiệt lượng hơn vật 2.,Vật 1 và vật 2 đều không chứa nhiệt lượng.,Vật 1 chứa rất nhiều nhiệt lượng.",
+    "noi_dung": "Tính tích phân I = ₀∫¹ (2x + 1) dx.",
+    "cac_lua_chon": "I = 1, I = 2, I = 3, I = 4",
     "dap_an_dung": "B",
-    "giai_chi_tiet": "Theo nguyên lý truyền nhiệt, nhiệt lượng luôn tự động truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn."
+    "giai_chi_tiet": "Hàm nguyên hàm là F(x) = x² + x. Thế cận từ 0 đến 1: F(1) - F(0) = (1 + 1) - 0 = 2."
   },
   {
     "id": 2,
@@ -16,10 +16,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Khi một khối khí lí tưởng xác định giãn nở đẳng nhiệt thì phát biểu nào sau đây là đúng?",
-    "cac_lua_chon": "nội năng của khối khí tăng.,áp suất của khối khí không đổi.,áp suất của khối khí giảm.,nội năng của khối khí giảm.",
-    "dap_an_dung": "C",
-    "giai_chi_tiet": "Theo định luật Boyle-Mariotte, trong quá trình đẳng nhiệt của một khối khí lí tưởng xác định, áp suất tỉ lệ nghịch với thể tích. Khi khối khí giãn nở (thể tích tăng) thì áp suất sẽ giảm."
+    "noi_dung": "Cho tích phân I = ₀∫² f(x) dx = 3. Tính giá trị của J = ₀∫² 2.f(x) dx.",
+    "cac_lua_chon": "J = 3, J = 6, J = 1.5, J = 9",
+    "dap_an_dung": "B",
+    "giai_chi_tiet": "Theo tính chất của tích phân: J = 2 . ₀∫² f(x) dx = 2 . 3 = 6."
   },
   {
     "id": 3,
@@ -27,10 +27,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một khối khí lí tưởng xác định biến đổi theo quá trình thể tích không đổi từ trạng thái X sang trạng thái Y, phát biểu nào sau đây là đúng?",
-    "cac_lua_chon": "Mật độ phân tử của khối khí tăng lên.,Công mà khối khí sinh ra bằng không.,Nhiệt độ của khối khí không đổi.,Khoảng cách trung bình giữa các phân tử tăng lên.",
+    "noi_dung": "Diện tích S của hình phẳng giới hạn bởi đồ thị hàm số y = x², trục hoành và hai đường thẳng x = 0, x = 3 được tính bằng công thức:",
+    "cac_lua_chon": "S = ₀∫³ x dx, S = ₀∫³ x² dx, S = ₀∫³ |x| dx, S = ₀∫³ x³ dx",
     "dap_an_dung": "B",
-    "giai_chi_tiet": "Quá trình thể tích không đổi là quá trình đẳng tích (V = const). Trong quá trình này khối khí không thực hiện công và không nhận công, do đó công bằng không (A = 0)."
+    "giai_chi_tiet": "Công thức tính diện tích hình phẳng là S = ₐ∫ᵇ |f(x)| dx. Vì x² ≥ 0 trên [0; 3] nên S = ₀∫³ x² dx."
   },
   {
     "id": 4,
@@ -38,10 +38,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Công suất hao phí do tỏa nhiệt trên đường dây tải điện tải đi một công suất P, với điện áp hiệu dụng U và điện trở tổng cộng là R (hệ số công suất bằng 1) được tính bằng công thức nào?",
-    "cac_lua_chon": "\\frac{R \\cdot P^2}{U^2},\\frac{R \\cdot U^2}{P^2},\\frac{R^2 \\cdot P}{U},\\frac{R \\cdot P}{U}",
-    "dap_an_dung": "A",
-    "giai_chi_tiet": "Công suất hao phí trên đường dây tải điện được xác định bằng công thức phẳng lỳ: \\Delta P = R \\cdot \\frac{P^2}{U^2}."
+    "noi_dung": "Biết F(x) là một nguyên hàm của hàm số f(x) trên đoạn [a; b]. Khẳng định nào sau đây đúng?",
+    "cac_lua_chon": "ₐ∫ᵇ f(x) dx = F(a) - F(b), ₐ∫ᵇ f(x) dx = F(b) - F(a), ₐ∫ᵇ f(x) dx = F(b) + F(a), ₐ∫ᵇ f(x) dx = F'(b) - F'(a)",
+    "dap_an_dung": "B",
+    "giai_chi_tiet": "Theo công thức Newton-Leibniz: Tích phân từ a đến b của f(x) dx bằng F(b) - F(a)."
   },
   {
     "id": 5,
@@ -49,10 +49,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một sóng cơ hình sin truyền theo trục Ox với chu kì T và bước sóng \\lambda. Tốc độ truyền sóng v được xác định bằng công thức nào sau đây?",
-    "cac_lua_chon": "\\frac{\\lambda}{T},\\frac{T}{\\lambda},\\lambda \\cdot T,\\frac{2\\pi}{T}",
-    "dap_an_dung": "A",
-    "giai_chi_tiet": "Tốc độ truyền sóng v là quãng đường sóng truyền đi được trong một chu kỳ thời gian: v = \\frac{\\lambda}{T}."
+    "noi_dung": "Tính tích phân I = ₁∫ᵉ (1/x) dx.",
+    "cac_lua_chon": "I = e, I = 0, I = 1, I = ln(2)",
+    "dap_an_dung": "C",
+    "giai_chi_tiet": "Nguyên hàm của 1/x là ln|x|. Thế cận: ln(e) - ln(1) = 1 - 0 = 1."
   },
   {
     "id": 6,
@@ -60,10 +60,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Đặt điện áp xoay chiều u = U_0 \\cdot cos(\\omega t) vào hai đầu đoạn mạch chỉ có tụ điện với điện dung C. Dung kháng Z_C của tụ điện được tính bằng:",
-    "cac_lua_chon": "\\omega \\cdot C,\\frac{1}{\\omega \\cdot C},\\frac{1}{\\omega^2 \\cdot C},\\frac{\\omega}{C}",
+    "noi_dung": "Đơn vị của điện thế và hiệu điện thế trong hệ SI là:",
+    "cac_lua_chon": "Ampe (A), Vôn (V), Ohm (Ω), Cơ-lông (C)",
     "dap_an_dung": "B",
-    "giai_chi_tiet": "Dung kháng của tụ điện đặc trưng cho sự cản trở dòng điện xoay chiều của tụ điện đối với mạch ngoài, được tính bằng biểu thức phẳng Z_C = \\frac{1}{\\omega \\cdot C}."
+    "giai_chi_tiet": "Đơn vị hiệu điện thế là Vôn (V)."
   },
   {
     "id": 7,
@@ -71,10 +71,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Trong hiện tượng giao thoa sóng cơ của hai nguồn kết hợp cùng pha, những điểm trong vùng giao thoa dao động với biên độ cực đại có hiệu đường đi d_2 - d_1 bằng:",
-    "cac_lua_chon": "(k + 0.5) \\cdot \\lambda,k \\cdot \\lambda,k \\cdot \\frac{\\lambda}{2},(k + 0.5) \\cdot \\frac{\\lambda}{2}",
-    "dap_an_dung": "B",
-    "giai_chi_tiet": "Điều kiện để có cực đại giao thoa đối với hai nguồn dao động cùng pha là hiệu đường đi từ hai nguồn đến điểm đó phải bằng một số nguyên lần bước sóng: d_2 - d_1 = k \\cdot \\lambda."
+    "noi_dung": "Công thức suất điện động cảm ứng theo định luật Faraday là:",
+    "cac_lua_chon": "-ΔΦ/Δt, -ΔΦ . Δt, -Δt/ΔΦ, ΔΦ + Δt",
+    "dap_an_dung": "A",
+    "giai_chi_tiet": "Định luật Faraday: ec = -ΔΦ/Δt."
   },
   {
     "id": 8,
@@ -82,10 +82,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một dòng điện xoay chiều chạy qua đoạn mạch có phương trình cường độ i = I_0 \\cdot cos(\\omega t + \\varphi). Đại lượng I_0 được gọi là gì?",
-    "cac_lua_chon": "Cường độ dòng điện hiệu dụng,Cường độ dòng điện cực đại,Cường độ dòng điện tức thời,Tần số góc của dòng điện",
-    "dap_an_dung": "B",
-    "giai_chi_tiet": "In phương trình dòng điện xoay chiều hình sin, đại lượng đứng trước hàm cosin đại diện cho giá trị biên độ lớn nhất, tức là cường độ dòng điện cực đại I_0."
+    "noi_dung": "Nhiệt lượng cung cấp để vật tăng nhiệt độ ΔT tính bằng:",
+    "cac_lua_chon": "Q = mcΔT, Q = mc/ΔT, Q = cΔT/m, Q = mc + ΔT",
+    "dap_an_dung": "A",
+    "giai_chi_tiet": "Nhiệt lượng thay đổi nhiệt độ: Q = mcΔT."
   },
   {
     "id": 9,
@@ -93,10 +93,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Độ cao của âm là một đặc tính sinh lý của âm gắn liền với đặc trưng vật lý nào sau đây của nguồn âm?",
-    "cac_lua_chon": "Đồ thị dao động âm,Mức cường độ âm,Tần số âm,Năng lượng âm",
+    "noi_dung": "Lực Cu-lông giữa hai điện tích điểm đặt trong chân không tỉ lệ nghịch với:",
+    "cac_lua_chon": "Tích hai điện tích, Khoảng cách, Bình phương khoảng cách, Căn khoảng cách",
     "dap_an_dung": "C",
-    "giai_chi_tiet": "Độ cao của âm phụ thuộc trực tiếp vào tần số dao động của nguồn âm. Âm nghe càng cao (bổng) khi tần số càng lớn, âm nghe càng trầm khi tần số càng nhỏ."
+    "giai_chi_tiet": "Lực Cu-lông tỉ lệ nghịch bình phương khoảng cách: F ~ 1/r²."
   },
   {
     "id": 10,
@@ -104,10 +104,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Đặt điện áp xoay chiều vào hai đầu đoạn mạch gồm điện trở R, cuộn cảm thuần L và tụ điện C mắc nối tiếp. Khi trong mạch xảy ra hiện tượng cộng hưởng điện thì tổng trở Z của đoạn mạch bằng bao nhiêu?",
-    "cac_lua_chon": "Z = R,Z = \\frac{L}{C},Z = |Z_L - Z_C|,Z = R + Z_L + Z_C",
-    "dap_an_dung": "A",
-    "giai_chi_tiet": "Khi xảy ra hiện tượng cộng hưởng điện, cảm kháng bằng dung kháng (Z_L = Z_C). Lúc này tổng trở của mạch đạt giá trị cực tiểu và đúng bằng giá trị của điện trở thuần: Z = R."
+    "noi_dung": "Một sóng âm truyền từ không khí vào nước thì đại lượng nào KHÔNG đổi?",
+    "cac_lua_chon": "Tốc độ truyền sóng, Bước sóng, Tần số sóng, Biên độ sóng",
+    "dap_an_dung": "C",
+    "giai_chi_tiet": "Tần số sóng luôn không đổi khi qua các môi trường."
   },
   {
     "id": 11,
@@ -115,10 +115,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Lực tương tác giữa hai điện tích điểm đặt trong chân không sẽ biến đổi như thế nào nếu khoảng cách giữa chúng tăng lên hai lần?",
-    "cac_lua_chon": "Tăng lên hai lần.,Giảm đi hai lần.,Tăng lên bốn lần.,Giảm đi bốn lần.",
+    "noi_dung": "Đồ thị dao động, Mức cường độ âm, Biên độ dao động, Tần số âm",
+    "cac_lua_chon": "Đồ thị dao động, Mức cường độ âm, Biên độ dao động, Tần số âm",
     "dap_an_dung": "D",
-    "giai_chi_tiet": "Theo định luật Coulomb, lực tương tác tỉ lệ nghịch với bình phương khoảng cách giữa hai điện tích điểm. Khoảng cách tăng 2 lần thì lực giảm r² = 2² = 4 lần."
+    "giai_chi_tiet": "Độ cao sinh lý của âm phụ thuộc vào tần số âm."
   },
   {
     "id": 12,
@@ -126,10 +126,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Đại lượng nào sau đây đặc trưng cho khả năng tích điện của tụ điện ở một hiệu điện thế nhất định?",
-    "cac_lua_chon": "Điện tích của tụ.,Hiệu điện thế.,Điện dung của tụ.,Cường độ điện trường.",
-    "dap_an_dung": "C",
-    "giai_chi_tiet": "Điện dung C đặc trưng cho khả năng tích điện của tụ điện, xác định bởi hệ thức phẳng C = Q/U."
+    "noi_dung": "Suất điện động của nguồn điện đặc trưng cho khả năng nào của nguồn?",
+    "cac_lua_chon": "Tích điện cho nguồn, Thực hiện công lực lạ, Tác dụng lực điện trường, Tiêu thụ điện năng",
+    "dap_an_dung": "B",
+    "giai_chi_tiet": "Suất điện động đo bằng công lực lạ làm dịch chuyển điện tích."
   },
   {
     "id": 13,
@@ -137,10 +137,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Suất điện động của nguồn điện là đại lượng đặc trưng cho khả năng nào sau đây của nguồn?",
-    "cac_lua_chon": "Tích điện cho các bản cực.,Thực hiện công của các lực lạ.,Tác dụng lực điện lên điện tích.,Dự trữ điện năng trong nguồn.",
-    "dap_an_dung": "B",
-    "giai_chi_tiet": "Suất điện động đặc trưng cho khả năng thực hiện công của các lực lạ bên trong nguồn điện khi dịch chuyển một đơn vị điện tích dương ngược chiều điện trường."
+    "noi_dung": "Hệ thức liên hệ giữa hiệu điện thế U và điện trường đều E là:",
+    "cac_lua_chon": "U = E.d, E = U.d, U = E/d, d = U.E",
+    "dap_an_dung": "A",
+    "giai_chi_tiet": "Liên hệ giữa hiệu điện thế và điện trường: U = E.d."
   },
   {
     "id": 14,
@@ -148,10 +148,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Hạt tải điện chủ yếu chịu trách nhiệm tải dòng điện bên trong môi trường chất bán dẫn tinh khiết là gì?",
-    "cac_lua_chon": "Electron tự do.,Ion dương.,Ion âm.,Electron tự do và lỗ trống.",
-    "dap_an_dung": "D",
-    "giai_chi_tiet": "Trong chất bán dẫn tinh khiết, dòng điện là dòng dịch chuyển có hướng đồng thời của các electron tự do ngược chiều điện trường và các lỗ trống cùng chiều điện trường."
+    "noi_dung": "Hiện tượng quang điện ngoài làm electron bứt ra khỏi kim loại khi:",
+    "cac_lua_chon": "Nung nóng nhiệt độ cao, Chiếu ánh sáng thích hợp, Nhúng vào dung dịch axit, Cho dòng điện lớn chạy qua",
+    "dap_an_dung": "B",
+    "giai_chi_tiet": "Xảy ra khi chiếu bước sóng ngắn hơn giới hạn quang điện."
   },
   {
     "id": 15,
@@ -159,10 +159,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một đoạn mạch xoay chiều gồm một điện trở thuần R mắc nối tiếp với một cuộn cảm thuần L. Tổng trở Z của đoạn mạch được tính bằng công thức nào?",
-    "cac_lua_chon": "Z = R + Z_L,Z = \\sqrt{R^2 + Z_L^2},Z = |R - Z_L|,Z = \\sqrt{R^2 - Z_L^2}",
-    "dap_an_dung": "B",
-    "giai_chi_tiet": "Do điện áp trên điện trở vuông pha với điện áp trên cuộn cảm thuần, tổng trở hệ mạch tuân theo quy tắc hình học Pythagore: Z = \\sqrt{R^2 + Z_L^2}."
+    "noi_dung": "Biết khối lượng của proton là m_p, nơtron là m_n, hạt nhân X có số khối A và số proton Z. Độ hụt khối Δm của hạt nhân này được tính bằng:",
+    "cac_lua_chon": "Δm = Z.m_p + (A-Z).m_n - m_X, Δm = Z.m_p + A.m_n - m_X, Δm = m_X - [Z.m_p + (A-Z).m_n], Δm = Z.m_p + (A+Z).m_n - m_X",
+    "dap_an_dung": "A",
+    "giai_chi_tiet": "Độ hụt khối Δm = Z.m_p + (A-Z).m_n - m_X."
   },
   {
     "id": 16,
@@ -170,10 +170,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Hệ số công suất của một đoạn mạch xoay chiều bất kỳ mắc nối tiếp được xác định thông qua hệ thức phẳng nào sau đây?",
-    "cac_lua_chon": "cos\\varphi = \\frac{Z}{R},cos\\varphi = \\frac{R}{Z},cos\\varphi = \\frac{Z_L}{R},cos\\varphi = \\frac{Z_C}{R}",
-    "dap_an_dung": "B",
-    "giai_chi_tiet": "Hệ số công suất của một mạch xoay chiều nối tiếp luôn được tính bằng tỉ số giữa điện trở thuần R và tổng trở Z: cos\\varphi = R / Z."
+    "noi_dung": "Nén một khối khí lí tưởng trong xilanh kín. Nội năng của khối khí",
+    "cac_lua_chon": "không đổi, nếu xilanh cách nhiệt., giảm do khối khí nhận công., tăng, nếu xilanh cách nhiệt., tăng do khối khí nhận công.",
+    "dap_an_dung": "D",
+    "giai_chi_tiet": "Khi nén khí lí tưởng, khối khí nhận công (A > 0). Nếu cách nhiệt (Q = 0) hoặc trao đổi nhiệt ít, nội năng sẽ tăng (ΔU = A + Q > 0). Do đó nội năng tăng do khối khí nhận công."
   },
   {
     "id": 17,
@@ -181,10 +181,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Sóng âm truyền nhanh nhất trong môi trường nào sau đây dưới điều kiện tiêu chuẩn?",
-    "cac_lua_chon": "Chất khí.,Chất lỏng.,Chất rắn.,Chân không.",
-    "dap_an_dung": "C",
-    "giai_chi_tiet": "Tốc độ truyền sóng âm phụ thuộc vào mật độ vật chất và tính đàn hồi của môi trường, do đó vận tốc truyền âm tuân theo thứ tự: v_{ran} > v_{long} > v_{khi}."
+    "noi_dung": "Trong một từ trường đều, một proton chuyển động tròn đều chỉ do tác dụng của lực từ. Phát biểu nào sau đây là đúng?",
+    "cac_lua_chon": "Vận tốc của hạt không đổi., Lực từ không sinh công., Gia tốc của hạt không đổi., Động năng của hạt tăng.",
+    "dap_an_dung": "B",
+    "giai_chi_tiet": "Lực từ (lực Lo-ren-xơ) luôn vuông góc với vận tốc chuyển động nên công của lực từ bằng 0 (lực từ không sinh công). Đòng năng và tốc độ của hạt giữ nguyên không đổi."
   },
   {
     "id": 18,
@@ -192,10 +192,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Khi hiện tượng quang điện xảy ra đối với một tấm kim loại, đại lượng nào sau đây của hạt electron bứt ra phụ thuộc trực tiếp vào tần số của ánh sáng kích thích?",
-    "cac_lua_chon": "Khối lượng.,Điện tích.,Động năng ban đầu cực đại.,Số lượng hạt bứt ra.",
-    "dap_an_dung": "C",
-    "giai_chi_tiet": "Theo hệ thức Einstein về hiện tượng quang điện, động năng ban đầu cực đại của quang electron tỉ lệ thuận với tần số góc ánh sáng kích thích mạch ngoài: W_{dmax} = h\\cdot f - A."
+    "noi_dung": "Khi đun một ấm nước, lúc nước đang sôi, dù tiếp tục cung cấp nhiệt lượng thì nhiệt độ vẫn ở 100 °C cho đến khi cạn nước. Phát biểu nào sau đây là đúng?",
+    "cac_lua_chon": "Việc đun với công suất nhiệt cao hơn sẽ làm nhiệt độ sôi của nước cao hơn 100 °C., Nhiệt lượng cung cấp cho nước đang sôi làm tăng tốc độ trung bình của các phân tử nước., Do nhiệt độ của nước không thay đổi nên nội năng của khối nước trong ấm không đổi., Nhiệt lượng cung cấp cho nước đang sôi dùng để phá vỡ liên kết giữa các phân tử nước.",
+    "dap_an_dung": "D",
+    "giai_chi_tiet": "Trong quá trình chuyển thể (sôi), nhiệt lượng cung cấp không dùng để tăng nhiệt độ mà dùng để phá vỡ các liên kết giữa các phân tử chất lỏng để chuyển sang thể hơi."
   },
   {
     "id": 19,
@@ -203,10 +203,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một lượng khí lí tưởng xác định thực hiện quá trình biến đổi trạng thái từ áp suất ban đầu, tiến hành nén khí đẳng nhiệt làm thể tích giảm đi một nửa. Xét tính Đúng/Sai của các phát biểu sau đây: a) Trong quá trình nén đẳng nhiệt, nội năng của khối khí tăng liên tục do nhận công bên ngoài. b) Áp suất của khối khí sau khi nén sẽ tăng lên gấp hai lần so với giá trị ban đầu. c) Mật độ phân tử của khối khí trong xi lanh được giữ không đổi suốt toàn bộ quá trình biến đổi. d) Khối khí tỏa ra một nhiệt lượng đúng bằng công mà ngoại lực đã thực hiện lên khối khí.",
-    "cac_lua_chon": "Đúng, Sai",
-    "dap_an_dung": "S,Đ,S,Đ",
-    "giai_chi_tiet": "a) Sai vì biến đổi đẳng nhiệt thì nhiệt độ không đổi, dẫn tới nội năng không đổi (U=const). b) Đúng theo định luật Boyle-Mariotte, thể tích giảm một nửa thì áp suất tăng gấp đôi. c) Sai vì thể tích giảm mà số hạt không đổi nên mật độ phân tử tăng. d) Đúng vì nguyên lý I NĐLH: \\Delta U = A + Q = 0 -> Q = -A (Nhận công thì tỏa nhiệt)."
+    "noi_dung": "Khi đặt vật 1 tiếp xúc nhiệt với vật 2 và có sự truyền nhiệt từ vật 1 sang vật 2, phát biểu nào sau đây là đúng?",
+    "cac_lua_chon": "Vật 1 chứa rất nhiều nhiệt lượng., Vật 1 và vật 2 đều không chứa nhiệt lượng., Vật 2 chứa rất ít nhiệt lượng., Vật 1 chứa nhiều nhiệt lượng hơn vật 2.",
+    "dap_an_dung": "B",
+    "giai_chi_tiet": "Vật không chứa \"\"nhiệt lượng\"\", vật chỉ chứa \"\"nội năng\"\". Nhiệt lượng là phần nội năng tăng hay giảm trong quá trình truyền nhiệt. Vì vậy cả hai vật đều không chứa nhiệt lượng."
   },
   {
     "id": 20,
@@ -214,10 +214,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Đặt điện áp xoay chiều u = U\\sqrt{2} \\cdot cos(\\omega t) vào hai đầu đoạn mạch gồm điện trở thuần R, cuộn cảm thuần L và tụ điện C mắc nối tiếp. Xét tính Đúng/Sai của các phát biểu sau: a) Điện áp hiệu dụng giữa hai đầu điện trở R luôn có giá trị bằng điện áp hiệu dụng toàn mạch mạch ngoài. b) Nếu trong mạch xảy ra hiện tượng cộng hưởng điện thì cường độ hiệu dụng dòng điện đạt cực đại. c) Khi tần số dòng điện biến đổi làm cảm kháng bằng dung kháng, công suất tiêu thụ mạch đạt cực tiểu. d) Hệ số công suất toàn mạch đạt giá trị lớn nhất đúng bằng 1 khi có cộng hưởng điện xảy ra.",
-    "cac_lua_chon": "Đúng, Sai",
-    "dap_an_dung": "S,Đ,S,Đ",
-    "giai_chi_tiet": "a) Sai vì U_R chỉ bằng U khi có cộng hưởng điện. b) Đúng vì cộng hưởng điện tổng trở Z đạt cực tiểu bằng R nên I đạt cực đại. c) Sai vì cảm kháng bằng dung kháng mạch xảy ra cộng hưởng, công suất đạt cực đại. d) Đúng vì khi cộng hưởng điện cos\\varphi = R/Z = R/R = 1 (giá trị cực đại)."
+    "noi_dung": "Trong chẩn đoán bệnh, khi đưa một đồng vị phóng xạ vào cơ thể người bệnh, để đảm bảo an toàn, người ta dùng đồng vị có",
+    "cac_lua_chon": "năng lượng liên kết riêng nhỏ để dễ dàng phân rã trong mạch máu., chu kì bán rã dài để kéo dài thời gian tác dụng của chất phóng xạ trong cơ thể., khả năng phát ra tia alpha mạnh để dễ dàng xuyên qua cơ thể đến máy thu., chu kì bán rã ngắn để giảm thời gian tồn tại của chất phóng xạ trong cơ thể.",
+    "dap_an_dung": "D",
+    "giai_chi_tiet": "Đồng vị phóng xạ y tế cần có chu kỳ bán rã ngắn để cơ thể nhanh chóng đào thải hoặc tự phân rã hết, giảm thiểu tác hại bức xạ kéo dài cho người bệnh."
   },
   {
     "id": 21,
@@ -225,10 +225,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một sóng cơ học truyền lan trên một sợi dây đàn hồi rất dài căng ngang dọc theo trục tọa độ Ox với phương trình dao động có dạng u = A \\cdot cos(20\\pi t - 0.5\\pi x) (với t tính bằng giây, x tính bằng mét). Xét tính Đúng/Sai của các phát biểu sau: a) Tần số góc của sóng cơ truyền trên dây có giá trị bằng 10 Hz. b) Tốc độ truyền sóng cơ trên sợi dây đàn hồi này có giá trị bằng 40 m/s. c) Chu kỳ dao động của các phần tử vật chất trên dây bằng 0.1 giây. d) Hai điểm nằm trên dây cách nhau một khoảng 2 mét dọc theo trục Ox luôn dao động ngược pha nhau.",
-    "cac_lua_chon": "Đúng, Sai",
-    "dap_an_dung": "S,Đ,Đ,S",
-    "giai_chi_tiet": "a) Sai vì tần số góc \\omega = 20\\pi rad/s -> tần số f = \\omega/2\\pi = 10 Hz. b) Đúng vì hệ số x là 2\\pi/\\lambda = 0.5\\pi -> \\lambda = 4m. Tốc độ v = \\lambda \\cdot f = 4 \\cdot 10 = 40 m/s. c) Đúng vì T = 1/f = 1/10 = 0.1s. d) Sai vì độ lệch pha \\Delta\\varphi = 2\\pi \\cdot d/\\lambda = 2\\pi \\cdot 2 / 4 = \\pi rad -> dao động ngược pha (d=2m là ngược pha)."
+    "noi_dung": "Nếu một proton đứng yên, nó sẽ",
+    "cac_lua_chon": "tạo ra từ trường khi nó nằm gần một dây dẫn., không tạo ra điện trường., không tạo ra từ trường., tạo ra từ trường giống như một nam châm nhỏ.",
+    "dap_an_dung": "C",
+    "giai_chi_tiet": "Điện tích đứng yên chỉ tạo ra điện trường xung quanh nó, không tạo ra từ trường (từ trường chỉ do điện tích dịch chuyển/dòng điện tạo ra)."
   },
   {
     "id": 22,
@@ -236,10 +236,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Xét một khối khí lí tưởng thực hiện một chu trình biến đổi kín khép mạch bao gồm các quá trình sau: đẳng tích tăng áp suất, đẳng áp giãn nở thể tích, và đẳng nhiệt nén khí về trạng thái ban đầu. Xét tính Đúng/Sai của các phát biểu sau: a) Trong quá trình đẳng tích tăng áp suất, khối khí thực hiện một công dương ra môi trường ngoài. b) Trong suốt toàn bộ một chu trình kín kín mạch, biến thiên nội năng tổng cộng của khối khí bằng không. c) Trong quá trình đẳng áp giãn nở thể tích, nhiệt độ của khối khí giảm xuống liên tục. d) Tổng công thô mà khối khí nhận vào hoặc sinh ra trong một chu trình đúng bằng diện tích hình bao chu trình.",
-    "cac_lua_chon": "Đúng, Sai",
-    "dap_an_dung": "S,Đ,S,Đ",
-    "giai_chi_tiet": "a) Sai vì quá trình đẳng tích thể tích không đổi nên khối khí không sinh công (A=0). b) Đúng vì trạng thái đầu trùng trạng thái cuối nên biến thiên nội năng bằng không. c) Sai vì đẳng áp V tỉ lệ thuận với T, thể tích giãn nở (V tăng) thì nhiệt độ T phải tăng. d) Đúng vì đồ thị chu trình kín có công sinh ra ròng đúng bằng diện tích hình phẳng bao quanh."
+    "noi_dung": "Với một khối khí lí tưởng xác định, định luật Charles mô tả mối liên hệ giữa",
+    "cac_lua_chon": "áp suất và thể tích của khối khí khi nhiệt độ tuyệt đối không đổi., áp suất và nhiệt độ tuyệt đối của khối khí khi thể tích không đổi., thể tích và nhiệt độ tuyệt đối của khối khí khi áp suất không đổi., thể tích và khối lượng của khối khí khi nhiệt độ tuyệt đối không đổi.",
+    "dap_an_dung": "C",
+    "giai_chi_tiet": "Định luật Charles áp dụng cho quá trình đẳng áp, mô tả mối quan hệ tỉ lệ thuận giữa thể tích V và nhiệt độ tuyệt đối T của một khối khí xác định."
   },
   {
     "id": 23,
@@ -247,10 +247,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Trước khi khởi hành, người lái xe điều chỉnh áp suất khí trong lốp xe ô tô về giá trị khuyến nghị của nhà sản xuất. Khi đó, nhiệt độ của khí trong lốp xe là 14,5 °C. Sau khi lái xe được một quãng đường, cảm biến cho biết nhiệt độ của khí trong lốp là 48,5 °C. Coi khí trong lốp xe là khí lí tưởng và thể tích lốp xe không thay đổi. Lấy T(K) = t(°C) + 273.<br><br>Câu hỏi: Áp suất khí trong lốp xe đã tăng thêm bao nhiêu phần trăm so với giá trị khuyến nghị (làm tròn kết quả đến chữ số hàng phần mười)?",
-    "cac_lua_chon": "Điền số",
-    "dap_an_dung": 11.8,
-    "giai_chi_tiet": "Quá trình đẳng tích: p1/T1 = p2/T2. Với T1 = 14,5 + 273 = 287,5 K; T2 = 48,5 + 273 = 321,5 K. Ta có p2/p1 = T2/T1 = 321,5/287,5 ≈ 1,1182. Phần trăm tăng thêm: Δp% = (p2 - p1)/p1 * 100% = 11,8%."
+    "noi_dung": "Khi truyền cùng một nhiệt lượng cho hai vật có cùng khối lượng được làm từ hai chất khác nhau, trong điều kiện không xảy ra sự chuyển thể, phát biểu nào sau đây là đúng?",
+    "cac_lua_chon": "Hai vật không thay đổi nhiệt độ., Vật được làm từ chất có nhiệt dung riêng lớn hơn có độ biến thiên nhiệt độ lớn hơn., Vật được làm từ chất có nhiệt dung riêng lớn hơn có độ biến thiên nhiệt độ nhỏ hơn., Hai vật có độ biến thiên nhiệt độ bằng nhau.",
+    "dap_an_dung": "C",
+    "giai_chi_tiet": "Từ công thức Q = mcΔT ⇒ ΔT = Q / (mc). Với cùng Q và m, vật nào có nhiệt dung riêng c lớn hơn thì độ biến thiên nhiệt độ ΔT sẽ nhỏ hơn."
   },
   {
     "id": 24,
@@ -258,10 +258,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Trước khi khởi hành, người lái xe điều chỉnh áp suất khí trong lốp xe ô tô về giá trị khuyến nghị của nhà sản xuất. Khi đó, nhiệt độ của khí trong lốp xe là 14,5 °C. Sau khi lái xe được một quãng đường, cảm biến cho biết nhiệt độ của khí trong lốp là 48,5 °C. Coi khí trong lốp xe là khí lí tưởng và thể tích lốp xe không thay đổi. Lấy T(K) = t(°C) + 273.<br><br>Câu hỏi: Người lái xe giảm áp suất khí trong lốp về giá trị khuyến nghị bằng cách xả bớt một lượng khí qua van. Nhiệt độ của khí trong lốp xe vẫn giữ ở mức 48,5 °C. Khối lượng khí đã được xả ra ngoài bằng bao nhiêu phần trăm khối lượng khí trong lốp xe trước khi xả (làm tròn kết quả đến chữ số hàng phần mười)?",
-    "cac_lua_chon": "Điền số",
-    "dap_an_dung": 10.6,
-    "giai_chi_tiet": "Áp dụng phương trình trạng thái Clapeyron-Mendeleev: m = pV*M/(RT). Vì V, T không đổi khi xả nên m tỉ lệ thuận với p. Khối lượng khí còn lại m3/m2 = p1/p2 = 1/1,1182 ≈ 0,8943. Phần trăm khí xả ra ngoài: Δm% = (1 - m3/m2) * 100% = 10,6%."
+    "noi_dung": "Một xilanh cách nhiệt nằm ngang được chia thành hai ngăn kín bởi một pit-tông cách nhiệt có thể dịch chuyển không ma sát. Trong mỗi ngăn có một lượng khí lí tưởng xác định. Ban đầu hệ ở trạng thái cân bằng. Giả sử làm dịch chuyển pit-tông để nén khí ở ngăn 1.  a) Nội năng của khối khí ở ngăn 1 không đổi do ngăn này được cách nhiệt.  b) Khối khí ở ngăn 1 và khối khí ở ngăn 2 đều nhận công từ pit-tông.  c) Nhiệt độ của khối khí ở ngăn 2 giảm.  d) Khối khí ở ngăn 1 và khối khí ở ngăn 2 đều không nhận nhiệt lượng từ môi trường bên ngoài.",
+    "cac_lua_chon": "Đúng, Sai",
+    "dap_an_dung": "S, S, S, Đ",
+    "giai_chi_tiet": "a) Sai. Nén khí làm tăng nội năng; b) Sai. Ngăn 2 giãn nở sinh công; c) Sai. Ngăn 2 bị biến đổi làm tăng nhiệt độ (Theo đáp án khoanh gốc của thầy); d) Đúng. Xilanh cách nhiệt hoàn toàn nên Q = 0."
   },
   {
     "id": 25,
@@ -269,10 +269,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một lượng khí lí tưởng chứa trong một xi lanh kín cách nhiệt đặt nằm ngang, được phân chia làm hai phần bằng một pit-tông kín di động tự do.<br><br>Câu hỏi: Người ta thực hiện một công bằng 350 J để nén khối khí lí tưởng này một cách nhanh chóng sao cho nhiệt lượng chưa kịp trao đổi với môi trường ngoài. Xác định độ biến thiên nội năng tổng cộng của khối khí trong xi lanh bằng bao nhiêu Jun?",
-    "cac_lua_chon": "Điền số",
-    "dap_an_dung": 350,
-    "giai_chi_tiet": "Theo nguyên lý I nhiệt động lực học: ΔU = A + Q. Do quá trình diễn ra nhanh chóng, hệ cách nhiệt nên Q = 0. Khối khí nhận công từ ngoại lực bên ngoài nên A = +350 J. Do đó, độ biến thiên nội năng ΔU = 350 Jun."
+    "noi_dung": "Nhiệt dung riêng của nước được xác định bằng công thức c = Q / (m.ΔT). Trong đó, Q là nhiệt lượng cần cung cấp, m là khối lượng của nước, ΔT là độ thay đổi nhiệt độ của nước. <br><br> <img src=/static/nhiet_luong_ke.png style=float:left;margin-right:20px;margin-bottom:10px;max-width:240px;border:1px_solid_#cbd5e0;padding:5px;border-radius:4px; > Thảo luận về công thức này, một nhóm học sinh cho rằng: Nhiệt dung riêng của nước phụ thuộc vào khối lượng của nước. Để kiểm tra giả thuyết, họ dùng nhiệt lượng kế có dây điện trở hoạt động với dòng điện có cường độ I và hiệu điện thế U không đổi, cân, nhiệt kế, đồng hồ và làm thí nghiệm theo các bước sau: (1) Cho một lượng nước có khối lượng m ở nhiệt độ T₁ (nhiệt độ phòng) vào bình nhiệt lượng kế. Sau khoảng thời gian Δt tính từ lúc cấp điện cho dây điện trở, nhiệt độ của nước trung bình là T₂. (2) Tính giá trị nhiệt dung riêng của nước. (3) Lặp lại bước (1) và bước (2) với các giá trị khối lượng m khác nhau. Kết quả thí nghiệm cho thấy nhiệt dung riêng của nước không phụ thuộc vào khối lượng của nước.<div style=clear:both;></div>  a) Khoảng thời gian cấp điện Δt càng lớn thì nhiệt lượng do dây điện trở tỏa ra càng lớn.  b) Tất cả nhiệt lượng do dây điện trở tỏa ra đều được dùng để làm tăng nhiệt độ của nước.  c) Nhiệt độ T₂ càng lớn thì nhiệt lượng bị mất mát càng nhỏ.  d) Kết quả thí nghiệm bác bỏ giả thuyết của nhóm học sinh. ",
+    "cac_lua_chon": "Đúng, Sai",
+    "dap_an_dung": "Đ, S, S, Đ",
+    "giai_chi_tiet": "a) Đúng vì Q = U.I.Δt, Δt tăng thì Q tăng; b) Sai vì có một phần nhiệt lượng làm nóng vỏ bình và mất mát ra môi trường; c) Sai vì nhiệt độ T₂ càng lớn thì chênh lệch nhiệt độ với môi trường càng cao, nhiệt mất mát càng lớn; d) Đúng vì kết quả cho thấy c không phụ thuộc vào m, bác bỏ giả thuyết của học sinh."
   },
   {
     "id": 26,
@@ -280,10 +280,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một lượng khí lí tưởng chứa trong một xi lanh kín cách nhiệt đặt nằm ngang, được phân chia làm hai phần bằng một pit-tông kín di động tự do.<br><br>Câu hỏi: Trong một quá trình khác, người ta giữ cố định pit-tông rồi cung cấp cho khối khí một nhiệt lượng bằng 150 J. Xác định độ biến thiên nội năng của khối khí lúc này bằng bao nhiêu Jun?",
-    "cac_lua_chon": "Điền số",
-    "dap_an_dung": 150,
-    "giai_chi_tiet": "Vì pit-tông được giữ cố định nên thể tích khí không đổi (quá trình đẳng tích), do đó khí không sinh công và không nhận công, tức là A = 0. Khối khí nhận nhiệt lượng nên Q = +150 J. Biến thiên nội năng ΔU = Q = 150 Jun."
+    "noi_dung": "Cuối thế kỷ XIX, quan điểm phổ biến cho rằng nguyên tử là một khối cầu trung hòa về điện. Tuy nhiên, cấu trúc bên trong của nguyên tử vẫn là một bí ẩn. Năm 1904, Thomson đã đề xuất mô hình nguyên tử gồm các electron nằm rải rác trong một khối cầu tích điện dương phân bố đều. Để kiểm tra tính đúng đắn của mô hình này, Rutherford cùng cộng sự đã thực hiện thí nghiệm bắn phá một lá vàng mỏng bằng chùm hạt alpha.  a) Kết quả thí nghiệm cho thấy phần lớn hạt alpha đi thẳng qua lá vàng, một số ít bị lệch hướng (tán xạ) với các góc khác nhau.  b) Kết quả thí nghiệm này cho thấy nguyên tử không có cấu tạo như mô hình nguyên tử của Thomson.  c) Các hạt alpha bị tán xạ với các góc khác nhau là do chúng tương tác điện với electron.  d) Kết quả thí nghiệm này chứng minh các electron chuyển động theo quỹ đạo dừng quanh hạt nhân.",
+    "cac_lua_chon": "Đúng, Sai",
+    "dap_an_dung": "Đ, Đ, S, Đ",
+    "giai_chi_tiet": "a) Đúng, đây là hiện tượng thực tế của thí nghiệm; b) Đúng vì nếu là khối đặc thì hạt alpha không thể đi xuyên qua phần lớn như vậy; c) Sai vì hạt alpha tán xạ chủ yếu do tương tác đẩy tĩnh điện với hạt nhân tích điện dương có khối lượng lớn; d) Đúng theo mẫu hành tinh nguyên tử của Rutherford."
   },
   {
     "id": 27,
@@ -291,10 +291,10 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Đặt vào hai đầu đoạn mạch xoay chiều RLC nối tiếp một điện áp hiệu dụng không đổi. Biết điện trở thuần R = 30 ôm, cảm kháng Z_L = 80 ôm và dung kháng Z_C = 40 ôm. <br><br>  Xác định tổng trở thô toàn mạch có giá trị bằng bao nhiêu ôm?",
-    "cac_lua_chon": "Điền số",
-    "dap_an_dung": 50,
-    "giai_chi_tiet": "Đặt vào hai đầu đoạn mạch xoay chiều RLC nối tiếp một điện áp hiệu dụng không đổi. Biết điện trở thuần R = 30 ôm, cảm kháng Z_L = 80 ôm và dung kháng Z_C = 40 ôm. <br><br>  Áp dụng công thức tính tổng trở hệ mạch xoay chiều nối tiếp: Z = \\sqrt{R^2 + (Z_L - Z_C)^2} = \\sqrt{30^2 + (80 - 40)^2} = \\sqrt{30^2 + 40^2} = 50 ôm."
+    "noi_dung": "Ở một mặt phẳng nằm ngang cố định trong một từ trường đều có các đường sức từ nằm ngang, đặt một đoạn dây dẫn thẳng có dòng điện không đổi sao cho chiều của dòng điện hợp với chiều của đường sức một góc α. Khi thay đổi góc α, đoạn dây vẫn nằm trong mặt phẳng cố định nói trên.  a) Lực từ tác dụng lên đoạn dây có phương vuông góc với cả đoạn dây và đường sức từ.  b) Khi đặt đoạn dây song song với các đường sức từ, không có lực từ tác dụng lên đoạn dây.  c) Khi thay đổi góc α thì phương của lực từ tác dụng lên đoạn dây cũng thay đổi.  d) Lực từ tác dụng lên đoạn dây có độ lớn cực đại khi đoạn dây vuông góc với đường sức từ.",
+    "cac_lua_chon": "Đúng, Sai",
+    "dap_an_dung": "Đ, Đ, S, Đ",
+    "giai_chi_tiet": "a) Đúng, theo quy tắc bàn tay trái lực từ vuông góc với mặt phẳng chứa đoạn dây và đường sức; b) Đúng vì khi song song α = 0 => F = B.I.L.sin(0) = 0; c) Sai vì dây và đường sức luôn nằm trong mặt phẳng ngang, nên phương của lực từ luôn là phương thẳng đứng vuông góc với mặt phẳng ngang đó; d) Đúng vì khi vuông góc α = 90 độ => sin(90) = 1 (cực đại)."
   },
   {
     "id": 28,
@@ -302,9 +302,64 @@
     "loai_de": "Thi Dai Hoc",
     "nam_hoc": 2026,
     "de_so": 1,
-    "noi_dung": "Một đường dây tải điện một pha truyền đi một công suất điện phát không đổi từ trạm tăng áp đến nơi tiêu thụ. Nếu người ta nâng điện áp hiệu dụng ở trạm phát lên gấp 5 lần thì công suất hao phí tỏa nhiệt trên đường dây tải điện sẽ giảm đi bao nhiêu lần?",
+    "noi_dung": "Một pin hạt nhân sử dụng đồng vị phóng xạ plutonium ²³⁸₉₄Pu với hằng số phóng xạ λ = 2,50.10⁻¹⁰ s⁻¹ để cung cấp năng lượng cho xe tự hành trên Hỏa Tinh. Tại thời điểm đưa vào sử dụng (thời điểm ban đầu), pin hạt nhân này chứa 8,60.10²⁴ hạt nhân ²³⁸₉₄Pu. Biết mỗi phân rã hạt nhân ²³⁸₉₄Pu tỏa ra năng lượng là 8,97.10⁻¹³ J và toàn bộ năng lượng này biến thành nhiệt. Trong đó, chỉ có 6,20% năng lượng nhiệt chuyển thành năng lượng điện. Biết một năm có 365 ngày, một ngày có 86400 s. <br><br> Năng lượng điện do pin cung cấp trong giây đầu tiên tính từ thời điểm ban đầu là bao nhiêu kilôjun (kJ) (làm tròn kết quả đến chữ số hàng phần trăm)?",
+    "cac_lua_chon": "Điền số, 2",
+    "dap_an_dung": 2.42,
+    "giai_chi_tiet": "Số hạt nhân phân rã trong 1s đầu: ΔN = N₀.λ.Δt = 8,6.10²⁴ . 2,5.10⁻¹⁰ . 1 = 2,15.10¹⁵ hạt. Năng lượng điện thu được: E = ΔN . E_phân_rã . H = 2,15.10¹⁵ . 8,97.10⁻¹³ . 6,2% ≈ 119,56 J = 0,12 kJ."
+  },
+  {
+    "id": 29,
+    "khoi_lop": 12,
+    "loai_de": "Thi Dai Hoc",
+    "nam_hoc": 2026,
+    "de_so": 1,
+    "noi_dung": "Ở thời điểm t = 25,0 năm kể từ thời điểm ban đầu, số lượng hạt nhân plutonium chưa phân rã trong pin là x.10²⁴ hạt nhân. Tìm x (làm tròn kết quả đến chữ số hàng phần trăm)?",
     "cac_lua_chon": "Điền số",
-    "dap_an_dung": 25,
-    "giai_chi_tiet": "Công suất hao phí tỏa nhiệt tỉ lệ nghịch với bình phương điện áp hiệu dụng truyền tải: ΔP = R * P^2 / U^2. Khi U tăng lên 5 lần thì công suất hao phí giảm đi U² = 5² = 25 lần."
+    "dap_an_dung": 7.06,
+    "giai_chi_tiet": "Đổi t = 25 năm = 25 . 365 . 86400 = 7,884.10⁸ s. Số hạt nhân còn lại: N = N₀ . e^(-λ.t) = 8,6.10²⁴ . e^(-2,5.10⁻¹⁰ . 7,884.10⁸) = 8,6.10²⁴ . e^(-0,1971) ≈ 7,06.10²⁴ hạt. Vậy x = 7,06."
+  },
+  {
+    "id": 30,
+    "khoi_lop": 12,
+    "loai_de": "Thi Dai Hoc",
+    "nam_hoc": 2026,
+    "de_so": 1,
+    "noi_dung": "Trước khi khởi hành, người lái xe điều chỉnh áp suất khí trong lốp xe ô tô về giá trị khuyến nghị của nhà sản xuất. Khi đó, nhiệt độ của khí trong lốp xe là 14,5 °C. Sau khi lái xe được một quãng đường, cảm biến cho biết nhiệt độ của khí trong lốp là 48,5 °C. Coi khí trong lốp xe là khí lí tưởng và thể tích lốp xe không thay đổi. Lấy T(K) = t(°C) + 273. <br><br> Áp suất khí trong lốp xe đã tăng thêm bao nhiêu phần trăm so với giá trị khuyến nghị (làm tròn kết quả đến chữ số hàng phần mười)?",
+    "cac_lua_chon": "Điền số, 2",
+    "dap_an_dung": 11.8,
+    "giai_chi_tiet": "Theo định luật Charles: P₁/T₁ = P₂/T₂. T₁ = 14,5 + 273 = 287,5 K; T₂ = 48,5 + 273 = 321,5 K. Ta có P₂/P₁ = T₂/T₁ = 321,5 / 287,5 ≈ 1,118. Vậy áp suất tăng thêm: 1,118 - 1 = 0,118 = 11,8%."
+  },
+  {
+    "id": 31,
+    "khoi_lop": 12,
+    "loai_de": "Thi Dai Hoc",
+    "nam_hoc": 2026,
+    "de_so": 1,
+    "noi_dung": "Người lái xe giảm áp suất khí trong lốp về giá trị khuyến nghị bằng cách xả bớt một lượng khí qua van. Nhiệt độ của khí trong lốp xe vẫn giữ ở mức 48,5 °C. Khối lượng khí đã được xả ra ngoài bằng bao nhiêu phần trăm khối lượng khí trong lốp xe trước khi xả (làm tròn kết quả đến chữ số hàng phần mười)?",
+    "cac_lua_chon": "Điền số",
+    "dap_an_dung": 10.6,
+    "giai_chi_tiet": "Khối lượng khí xả ra chiếm tỷ lệ: Δm/m = (P₂ - P₁)/P₂ = (321,5 - 287,5)/321,5 = 34 / 321,5 ≈ 0,1057 = 10,6%."
+  },
+  {
+    "id": 32,
+    "khoi_lop": 12,
+    "loai_de": "Thi Dai Hoc",
+    "nam_hoc": 2026,
+    "de_so": 1,
+    "noi_dung": "Một thanh kim loại có chiều dài l = 25,0 cm chuyển <br><br> <img src=/static/tu_truong_ray.png style=float:left;margin-right:20px;margin-bottom:10px;max-width:220px;border:1px_solid_#cbd5e0;padding:4px;border-radius:4px; > động đều với tốc độ v = 55,0 cm/s dọc theo hai thanh ray kim loại song song, được nối với nhau bằng một dây dẫn ở một đầu. Hệ thống ở trong một từ trường đều có cảm ứng từ vuông góc, hướng ra khỏi mặt phẳng hình vẽ và có độ lớn B = 0,350 T. Khi đó, suất điện động cảm ứng xuất hiện trong thanh kim loại có độ lớn là e꜀ = B.l.v. Thanh kim loại có điện trở là 18,0 Ω, các thanh ray và dây nối có điện trở không đáng kể. Cường độ dòng điện trong thanh kim loại là bao nhiêu miliampe (mA) (làm tròn kết quả đến chữ số hàng phần trăm)?",
+    "cac_lua_chon": "Điền số, 2",
+    "dap_an_dung": 2.67,
+    "giai_chi_tiet": "Đổi đơn vị: l = 0,25 m; v = 0,55 m/s. Suất điện động cảm ứng có độ lớn: e꜀ = B.l.v = 0,350 . 0,25 . 0,55 = 0,048125 V. Cường độ dòng điện chạy trong mạch: I = e꜀ / R = 0,048125 / 18 ≈ 0,0026736 A = 2,67 mA."
+  },
+  {
+    "id": 33,
+    "khoi_lop": 12,
+    "loai_de": "Thi Dai Hoc",
+    "nam_hoc": 2026,
+    "de_so": 1,
+    "noi_dung": "Công suất tỏa nhiệt ở thanh kim loại là bao nhiêu milioát (mW) (làm tròn kết quả đến chữ số hàng phần trăm)?",
+    "cac_lua_chon": "Điền số",
+    "dap_an_dung": 0.13,
+    "giai_chi_tiet": "Công suất tỏa nhiệt trên thanh kim loại: P = I² . R = (0,0026736)² . 18 ≈ 0,0001286 W = 0,13 mW. (Hoặc tính bằng P = e꜀² / R = (0,048125)² / 18 ≈ 0,13 mW)."
   }
 ]

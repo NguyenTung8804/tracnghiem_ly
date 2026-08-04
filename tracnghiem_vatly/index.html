@@ -9,7 +9,6 @@
             showProcessingMessages: false, messageStyle: "none"
         });
     </script>
-    <script type="text/javascript" async src="https://cloudflare.com"></script>
     <style>
         :root { --primary-color: #1a365d; --accent-color: #2b6cb0; --text-color: #2d3748; --bg-color: #f7fafc; }
         body { font-family: "Times New Roman", serif; font-size: 19px; line-height: 1.6; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
@@ -36,10 +35,6 @@
         .explanation { margin-top: 15px; padding: 15px; background-color: #fffaf0; border-radius: 6px; font-style: italic; border-left: 4px solid #dd6b20; }
         .correct { color: #38a169; font-weight: bold; }
         .wrong { color: #e53e3e; font-weight: bold; }
-        .frac { display: inline-block; vertical-align: middle; text-align: center; font-size: 17px; padding: 0 2px; }
-        .frac > span { display: block; padding: 0 2px; }
-        .frac span.num { border-bottom: 1px solid #2d3748; }
-        .frac span.den { padding-top: 1px; }
     </style>
 </head>
 <body>
@@ -54,7 +49,7 @@
             <p>Thời gian làm bài: 50 phút | Định dạng chuẩn cấu trúc 3 phần mới nhất của Bộ Giáo dục</p>
         </div>
         <form id="quizForm">
-            {% set vars = {'has_p1': false, 'has_p2': false, 'has_p3': false, 'last_printed_p2_id': 0, 'last_context': ''} %}
+            {% set vars = {'has_p1': false, 'has_p2': false, 'has_p3': false, 'last_printed_p2_id': 0} %}
             {% for q in questions %}
                 
                 {% if q.cac_lua_chon != "Đúng, Sai" and "Điền số" not in q.cac_lua_chon|string and not vars.has_p1 %}
@@ -68,44 +63,37 @@
                     {% if vars.update({'has_p3': true}) %}{% endif %}
                 {% endif %}
 
-                <!-- PHẦN I -->
+                {% if "Điền số" in q.cac_lua_chon|string and q.noi_dung.strip() != "" %}
+                    {% if '<br><br>' in q.noi_dung %}
+                        {% set total_sub = q.cac_lua_chon.split(',')|last|int if ',' in q.cac_lua_chon|string else 1 %}
+                        <div class="context-box">
+                            <div class="context-title">Nội dung câu {{ loop.index }} và {{ loop.index + total_sub - 1 }}:</div>
+                            {% set lead_part = q.noi_dung.split('<br><br>')|first %}
+                            <div>{{ lead_part | safe }}</div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <!-- PHẦN I: Gọi mảng lai tự nhận diện chuỗi hoặc mảng Array -->
                 {% if q.cac_lua_chon != "Đúng, Sai" and "Điền số" not in q.cac_lua_chon|string %}
-{% if q.cac_lua_chon != "Đúng, Sai" and "Điền số" not in q.cac_lua_chon|string %}
-    <div class="question-block" data-type="Phan1" data-id="{{ q.id }}">
-        <div class="question-text render-math-node"><strong>Câu {{ loop.index }}:</strong> {{ q.noi_dung|safe }}</div>
-        
-        {# 🌟 ĐỒNG BỘ TỐI CAO: Tự động phân tách thông minh bất kể môi trường Online hay Offline #}
-        {% if q.cac_lua_chon is string %}
-            {% set choices_list = q.cac_lua_chon.split(',') %}
-        {% else %}
-            {% set choices_list = q.cac_lua_chon %}
-        {% endif %}
-        
-        <div class="options-container" style="margin-top: 15px;">
-            <label class="option-item">
-                <input type="radio" name="p1_{{ q.id }}" value="A"> <strong>A.</strong>&nbsp;<span class="render-math-node">{{ choices_list[0]|trim|safe if choices_list[0] is defined else '' }}</span>
-            </label>
-            <label class="option-item">
-                <input type="radio" name="p1_{{ q.id }}" value="B"> <strong>B.</strong>&nbsp;<span class="render-math-node">{{ choices_list[1]|trim|safe if choices_list[1] is defined else '' }}</span>
-            </label>
-            <label class="option-item">
-                <input type="radio" name="p1_{{ q.id }}" value="C"> <strong>C.</strong>&nbsp;<span class="render-math-node">{{ choices_list[2]|trim|safe if choices_list[2] is defined else '' }}</span>
-            </label>
-            <label class="option-item">
-                <input type="radio" name="p1_{{ q.id }}" value="D"> <strong>D.</strong>&nbsp;<span class="render-math-node">{{ choices_list[3]|trim|safe if choices_list[3] is defined else '' }}</span>
-            </label>
-        </div>
-        <div id="feedback_p1_{{ q.id }}"></div>
-    </div>
-{% endif %}
-
-
-                <!-- PHẦN II -->
+                    <div class="question-block" data-type="Phan1" data-id="{{ q.id }}">
+                        <div class="question-text"><strong>Câu {{ loop.index }}:</strong> {{ q.noi_dung|safe }}</div>
+                        {% set arr_options = q.cac_lua_chon.split(',') if q.cac_lua_chon is string else q.cac_lua_chon %}
+                        <div class="options-container" style="margin-top: 15px;">
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="A"> <strong>A.</strong> &nbsp; {{ arr_options[0]|safe if arr_options[0] is defined else "" }}</label>
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="B"> <strong>B.</strong> &nbsp; {{ arr_options[1]|safe if arr_options[1] is defined else "" }}</label>
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="C"> <strong>C.</strong> &nbsp; {{ arr_options[2]|safe if arr_options[2] is defined else "" }}</label>
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="D"> <strong>D.</strong> &nbsp; {{ arr_options[3]|safe if arr_options[3] is defined else "" }}</label>
+                        </div>
+                        <div id="feedback_p1_{{ q.id }}"></div>
+                    </div>
+                {% endif %}
+                <!-- PHẦN II: Thuật toán tách phát biểu Đúng/Sai mượt mà ổn định -->
                 {% if q.cac_lua_chon == "Đúng, Sai" %}
                     {% if q.id != vars.last_printed_p2_id %}
                         {% if vars.update({'last_printed_p2_id': q.id}) %}{% endif %}
                         {% set full_text = q.noi_dung | string %}
-                        {% set full_text = full_text | replace("[[", "") | replace("]]", "") | replace("['", "") | replace("']", "") | replace('["', '') | replace('"]', '') | replace("\\\\", "\\") %}
+                        {% set full_text = full_text | replace("[[", "") | replace("]]", "") | replace("['", "") | replace("']", "") | replace('["', '') | replace('"]', '') %}
                         {% set part_lead = full_text.split('a)') if 'a)' in full_text else [full_text, ""] %}
                         {% set rem = part_lead[1] if part_lead[1] is defined else "" %}
                         {% set part_a = rem.split('b)') if 'b)' in rem else [rem, ""] %}
@@ -115,78 +103,42 @@
                         {% set part_c = rem.split('d)') if 'd)' in rem else [rem, ""] %}
                         {% set part_d = part_c[1] if part_c[1] is defined else "" %}
                         <div class="question-block" data-type="Đúng, Sai" data-id="{{ q.id }}">
-                            <div class="question-text render-math-node"><strong>Câu {{ loop.index }}:</strong> {{ part_lead[0] | safe }}</div>
+                            <div class="question-text"><strong>Câu {{ loop.index }}:</strong> {{ part_lead[0] | safe }}</div>
                             <table class="tf-table" style="margin-top: 20px;">
                                 <thead><tr><th>Phát biểu lựa chọn tương ứng phía trên</th><th style="width: 100px; text-align: center;">Đúng</th><th style="width: 100px; text-align: center;">Sai</th></tr></thead>
                                 <tbody>
-                                    <tr><td><strong>a)</strong> <span class="render-math-node">{{ part_a[0] | safe }}</span></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_a" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_a" value="S"></td></tr>
-                                    <tr><td><strong>b)</strong> <span class="render-math-node">{{ part_b[0] | safe }}</span></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_b" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_b" value="S"></td></tr>
-                                    <tr><td><strong>c)</strong> <span class="render-math-node">{{ part_c[0] | safe }}</span></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_c" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_c" value="S"></td></tr>
-                                    <tr><td><strong>d)</strong> <span class="render-math-node">{{ part_d | safe }}</span></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_d" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_d" value="S"></td></tr>
+                                    <tr><td><strong>a)</strong> {{ part_a[0] | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_a" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_a" value="S"></td></tr>
+                                    <tr><td><strong>b)</strong> {{ part_b[0] | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_b" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_b" value="S"></td></tr>
+                                    <tr><td><strong>c)</strong> {{ part_c[0] | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_c" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_c" value="S"></td></tr>
+                                    <tr><td><strong>d)</strong> {{ part_d | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_d" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_d" value="S"></td></tr>
                                 </tbody>
                             </table>
                             <div id="feedback_p2_{{ q.id }}"></div>
                         </div>
                     {% endif %}
                 {% endif %}
+
                 <!-- PHẦN III -->
                 {% if "Điền số" in q.cac_lua_chon|string %}
-                    {# Kiểm tra nếu noi_dung thực tế đầu vào là Mảng Array #}
-                    {% if q.noi_dung is not string and q.noi_dung|length > 1 %}
-                        {% set text_lead = q.noi_dung[0] | string | replace("['", "") | replace("']", "") | replace("[", "") | replace("]", "") | replace("'", "") %}
-                        {% set text_question = q.noi_dung[1] | string | replace("['", "") | replace("']", "") | replace("[", "") | replace("]", "") | replace("'", "") %}
-                        
-                        {% if text_lead != vars.last_context %}
-                            <div class="context-box">
-                                <div class="context-title">Nội dung câu {{ loop.index }} và {{ loop.index + 1 }}:</div>
-                                <div class="render-math-node">{{ text_lead | safe }}</div>
-                            </div>
-                            {% if vars.update({'last_context': text_lead}) %}{% endif %}
-                        {% endif %}
-                        
-                        <div class="question-block" data-type="Điền số" data-id="{{ q.id }}">
-                            <div class="question-text render-math-node">
-                                <strong>Câu {{ loop.index }}:</strong> {{ text_question | replace("Câu hỏi:", "") | safe }}
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <input type="text" class="input-short-answer" data-p3-input="{{ q.id }}" placeholder="Nhập đáp số...">
-                            </div>
-                            <div id="feedback_p3_{{ q.id }}"></div>
+                    <div class="question-block" data-type="Điền số" data-id="{{ q.id }}">
+                        <div class="question-text">
+                            <strong>Câu {{ loop.index }}:</strong>
+                            {% if '<br><br>' in q.noi_dung %}
+                                {% set sub_txt = q.noi_dung.split('<br><br>')|last %}
+                                {% set clean_sub = sub_txt | replace("Câu " ~ loop.index ~ ":", "") %}
+                                {% set clean_sub = clean_sub | replace("Câu " ~ (loop.index + 1) ~ ":", "") %}
+                                {% set clean_sub = clean_sub | replace("Câu " ~ (loop.index - 1) ~ ":", "") %}
+                                {{ clean_sub|safe }}
+                            {% else %}
+                                {% set clean_root = q.noi_dung | replace("Câu " ~ loop.index ~ ":", "") %}
+                                {{ clean_root|safe }}
+                            {% endif %}
                         </div>
-                        
-                    {# Nếu noi_dung là chuỗi phẳng phân tách bằng kí tự ngắt dòng <br><br> #}
-                    {% elif '<br><br>' in q.noi_dung|string %}
-                        {% set sub_parts = q.noi_dung.split('<br><br>') %}
-                        {% set text_lead = sub_parts[0] | string | replace("['", "") | replace("']", "") | replace("[", "") | replace("]", "") | replace("'", "") %}
-                        {% set text_question = sub_parts[1] | string | replace("['", "") | replace("']", "") | replace("[", "") | replace("]", "") | replace("'", "") %}
-                        
-                        {% if text_lead != vars.last_context %}
-                            <div class="context-box">
-                                <div class="context-title">Nội dung câu {{ loop.index }} và {{ loop.index + 1 }}:</div>
-                                <div class="render-math-node">{{ text_lead | safe }}</div>
-                            </div>
-                            {% if vars.update({'last_context': text_lead}) %}{% endif %}
-                        {% endif %}
-                        
-                        <div class="question-block" data-type="Điền số" data-id="{{ q.id }}">
-                            <div class="question-text render-math-node">
-                                <strong>Câu {{ loop.index }}:</strong> {{ text_question | replace("Câu hỏi:", "") | safe }}
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <input type="text" class="input-short-answer" data-p3-input="{{ q.id }}" placeholder="Nhập đáp số...">
-                            </div>
-                            <div id="feedback_p3_{{ q.id }}"></div>
+                        <div style="margin-top: 15px;">
+                            <input type="text" class="input-short-answer" data-p3-input="{{ q.id }}" placeholder="Nhập đáp số...">
                         </div>
-                    {% else %}
-                        <div class="question-block" data-type="Điền số" data-id="{{ q.id }}">
-                            {% set clean_single = q.noi_dung | string | replace("['", "") | replace("']", "") | replace("[", "") | replace("]", "") | replace("'", "") %}
-                            <div class="question-text render-math-node"><strong>Câu {{ loop.index }}:</strong> {{ clean_single|safe }}</div>
-                            <div style="margin-top: 15px;">
-                                <input type="text" class="input-short-answer" data-p3-input="{{ q.id }}" placeholder="Nhập đáp số...">
-                            </div>
-                            <div id="feedback_p3_{{ q.id }}"></div>
-                        </div>
-                    {% endif %}
+                        <div id="feedback_p3_{{ q.id }}"></div>
+                    </div>
                 {% endif %}
 
             {% endfor %}
@@ -197,30 +149,28 @@
     <input type="hidden" id="globalDeSo" value="{{ de_so }}">
     {% raw %}
     <script>
-        function localMathInterpreter(text) {
-            if (!text) return "";
-            let s = text.replace(/\$/g, "").replace(/\\\\/g, "\\");
-            s = s.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '<div class="frac"><span class="num">$1</span><span class="den">$2</span></div>');
-            s = s.replace(/\\Delta/g, "Δ").replace(/\\lambda/g, "λ").replace(/\\omega/g, "ω").replace(/\\pi/g, "π").replace(/\\varphi/g, "φ").replace(/\\cdot/g, "·");
-            s = s.replace(/\^2/g, "²").replace(/_0/g, "₀").replace(/_C/g, "<sub>C</sub>").replace(/_L/g, "<sub>L</sub>").replace(/_R/g, "<sub>R</sub>").replace(/_{hp}/g, "<sub>hp</sub>");
-            return s;
+        function convertLaTeXToUnicode(text) {
+            if (!text) return "Không có lời giải chi tiết.";
+            let uText = text.replace(/\$\$/g, '').replace(/\$/g, '');
+            uText = uText.replace(/\\Delta/g, 'Δ').replace(/\\lambda/g, 'λ').replace(/\\cdot/g, '·').replace(/\\approx/g, '≈').replace(/\\times/g, '×').replace(/\\_\{ph\^an\\\_r\^a\}/g, '_phân_rã').replace(/\\_\{đi\^en\}/g, '_điện').replace(/\\_\{0\}/g, '₀');
+            const superscriptMap = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻', '+': '⁺', ',': ',', '.': ',' };
+            uText = uText.replace(/\^\{([^}]+)\}/g, (match, p1) => { return p1.split('').map(char => superscriptMap[char] || char).join(''); });
+            return uText;
         }
-
-        function processEntirePageMath() {
-            document.querySelectorAll(".render-math-node").forEach(node => {
-                node.innerHTML = localMathInterpreter(node.innerHTML);
-            });
-        }
-        window.addEventListener("DOMContentLoaded", processEntirePageMath);
 
         document.getElementById("quizForm").onsubmit = function (e) {
             e.preventDefault(); 
+            
             const submitBtn = document.querySelector(".btn-submit");
             if (submitBtn) {
-                submitBtn.disabled = true; submitBtn.style.backgroundColor = "#a0aec0";
+                submitBtn.disabled = true; 
+                submitBtn.style.backgroundColor = "#a0aec0"; 
+                submitBtn.style.cursor = "not-allowed";      
                 submitBtn.innerHTML = "🔒 Bài thi đã được nộp thành công"; 
             }
-            document.querySelectorAll("input[type='radio'], input[type='text']").forEach(i => { i.disabled = true; });
+
+            const allInputs = document.querySelectorAll("input[type='radio'], input[type='text']");
+            allInputs.forEach(input => { input.disabled = true; });
 
             const batchAnswers = {};
             const currentDeSo = parseInt(document.getElementById("globalDeSo").value) || 1;
@@ -229,39 +179,116 @@
             const p2Blocks = document.querySelectorAll('.question-block[data-type="Đúng, Sai"]');
             const p3Blocks = document.querySelectorAll('.question-block[data-type="Điền số"]');
 
-            p1Blocks.forEach(b => { const id = b.getAttribute('data-id'); const s = b.querySelector(`input[name="p1_${id}"]:checked`); batchAnswers[String(id)] = s ? s.value : "Chưa chọn"; });
-            p2Blocks.forEach(b => { const id = b.getAttribute('data-id'); ['a', 'b', 'c', 'd'].forEach(k => { const s = b.querySelector(`input[name="q_${id}_${k}"]:checked`); batchAnswers[`q_${id}_${k}`] = s ? s.value : "Chưa chọn"; }); });
-            p3Blocks.forEach(b => { const id = b.getAttribute('data-id'); const f = b.querySelector(`[data-p3-input="${id}"]`); batchAnswers[String(id)] = f && f.value.trim() !== "" ? f.value.trim().replace(/,/g, '.') : "Chưa chọn"; });
+            p1Blocks.forEach(block => {
+                const qId = block.getAttribute('data-id');
+                const selected = block.querySelector(`input[name="p1_${qId}"]:checked`);
+                batchAnswers[String(qId)] = selected ? selected.value.trim().toUpperCase() : "Chưa chọn";
+            });
 
-            fetch("/api/submit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: batchAnswers, de_so: currentDeSo }) })
-            .then(res => res.json()).then(resData => {
-                const sMap = {}; resData.details.forEach(item => { sMap[String(item.id)] = item; });
-
-                p1Blocks.forEach(b => {
-                    const id = b.getAttribute('data-id'); const div = document.getElementById("feedback_p1_" + id); const res = sMap[String(id)];
-                    if (div && res) { div.innerHTML = `<p class="${res.is_correct ? 'correct' : 'wrong'}" style="margin-top:12px;">${res.is_correct ? '✓ Đúng' : '✗ Sai'} (Bạn chọn: ${res.chosen} - Đúng: ${res.dap_an_dung})</p><div class="explanation"><strong>Giải thích:</strong> ${localMathInterpreter(res.giai_chi_tiet)}</div>`; }
+            p2Blocks.forEach(block => {
+                const qId = block.getAttribute('data-id');
+                ['a', 'b', 'c', 'd'].forEach(sub => {
+                    const selected = block.querySelector(`input[name="q_${qId}_${sub}"]:checked`);
+                    batchAnswers[`q_${qId}_${sub}`] = selected ? selected.value.trim().toUpperCase() : "Chưa chọn";
                 });
-                p2Blocks.forEach(b => {
-                    const id = b.getAttribute('data-id'); const div = document.getElementById("feedback_p2_" + id); const res = sMap[String(id)];
-                    if (div && res) {
-                        let sub = res.sub_feedback, html = `<div style="margin-top:15px; border-top:1px dashed #cbd5e0; padding-top:10px;"><ul style="list-style-type:none; padding-left:10px;">`;
-                        ['a', 'b', 'c', 'd'].forEach(k => { html += `<li>• Ý ${k}): <span class="${sub[k].is_correct ? 'correct' : 'wrong'}">${sub[k].is_correct ? '✓ Đúng' : '✗ Sai'}</span> (Chọn: ${sub[k].chosen} - Đúng: <strong>${sub[k].correct}</strong>)</li>`; });
-                        div.innerHTML = html + `</ul><div class="explanation"><strong>Giải thích:</strong> ${localMathInterpreter(res.giai_chi_tiet)}</div></div>`;
+            });
+
+            p3Blocks.forEach(block => {
+                const qId = block.getAttribute('data-id');
+                const inputField = block.querySelector(`[data-p3-input="${qId}"]`);
+                if (inputField && inputField.value.trim() !== "") {
+                    batchAnswers[String(qId)] = inputField.value.trim().replace(/,/g, '.');
+                } else {
+                    batchAnswers[String(qId)] = "Chưa chọn";
+                }
+            });
+
+            fetch("/api/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ answers: batchAnswers, de_so: currentDeSo })
+            })
+            .then(response => response.json())
+            .then(resultData => {
+                const serverMap = {};
+                resultData.details.forEach(item => { serverMap[String(item.id)] = item; });
+
+                p1Blocks.forEach(block => {
+                    const qId = block.getAttribute('data-id');
+                    const feedbackDiv = document.getElementById("feedback_p1_" + qId);
+                    const serverResult = serverMap[String(qId)];
+                    if (feedbackDiv && serverResult) {
+                        let choice = serverResult.chosen;
+                        if (choice === "Chưa chọn" || choice === "undefined" || !choice) {
+                            choice = `<span class="wrong" style="font-weight:bold;">CHƯA CHỌN</span>`;
+                        }
+                        feedbackDiv.innerHTML = `<p class="${serverResult.is_correct ? 'correct' : 'wrong'}" style="margin-top:12px;">${serverResult.is_correct ? '✓ Đúng' : '✗ Sai'} (Bạn chọn: ${choice} - Đáp án đúng: ${serverResult.dap_an_dung.toUpperCase()})</p><div class="explanation"><strong>Giải thích chi tiết Phần I:</strong> ${convertLaTeXToUnicode(serverResult.giai_chi_tiet)}</div>`;
                     }
                 });
-                p3Blocks.forEach(b => {
-                    const id = b.getAttribute('data-id'); const div = document.getElementById("feedback_p3_" + id); const res = sMap[String(id)];
-                    if (div && res) { div.innerHTML = `<p class="${res.is_correct ? 'correct' : 'wrong'}" style="margin-top:12px;">${res.is_correct ? '✓ Đúng' : '✗ Sai'} (Bạn nhập: ${res.chosen} - Đúng: ${res.dap_an_dung})</p><div class="explanation"><strong>Giải thích:</strong> ${localMathInterpreter(res.giai_chi_tiet)}</div>`; }
+
+                p2Blocks.forEach(block => {
+                    const qId = block.getAttribute('data-id');
+                    const feedbackDiv = document.getElementById("feedback_p2_" + qId);
+                    const serverResult = serverMap[String(qId)];
+                    if (feedbackDiv && serverResult) {
+                        const sub = serverResult.sub_feedback;
+                        let count = 0;
+                        ['a', 'b', 'c', 'd'].forEach(k => { if(sub[k].is_correct) count++; });
+                        let earned = count * 0.25;
+
+                        let html = `<div style="margin-top:15px; border-top:1px dashed #cbd5e0; padding-top:10px;">`;
+                        html += `<p class="${serverResult.is_correct ? 'correct' : 'wrong'}">${serverResult.is_correct ? '✓ Đúng hoàn toàn (+1.0 điểm)' : `✗ Có ý sai (Đúng ${count}/4 ý - Nhận: +${earned} điểm)`}</p><ul style="list-style-type: none; padding-left: 10px; margin-top: 5px;">`;
+                        ['a', 'b', 'c', 'd'].forEach(k => {
+                            let choice = sub[k].chosen;
+                            if (choice === "Chưa chọn" || choice === "undefined" || !choice) {
+                                choice = `<span class="wrong" style="font-weight:bold;">CHƯA CHỌN</span>`;
+                            }
+                            html += `<li>• Ý ${k}): <span class="${sub[k].is_correct ? 'correct' : 'wrong'}">${sub[k].is_correct ? '✓ Đúng' : '✗ Sai'}</span> (Bạn chọn: ${choice} - Đáp án đúng: <strong>${sub[k].correct}</strong>)</li>`;
+                        });
+                        html += `</ul><div class="explanation"><strong>Giải thích chi tiết Phần II:</strong> ${convertLaTeXToUnicode(serverResult.giai_chi_tiet)}</div></div>`;
+                        feedbackDiv.innerHTML = html;
+                    }
                 });
 
-                const box = document.getElementById("resultBox");
-                if (box) { box.style.display = "block"; box.innerHTML = `<h3>KẾT QUẢ BÀI THI CỦA BẠN</h3><p style="font-size:23px;font-weight:bold;color:var(--accent-color);">TỔNG ĐIỂM QUY ĐỔI HỆ 10: ${resData.total_score} / 10 điểm</p>`; box.scrollIntoView({ behavior: 'smooth' }); }
-                if (typeof MathJax !== 'undefined') { MathJax.Hub.Queue(["Typeset", MathJax.Hub]); }
-            });
+                p3Blocks.forEach(block => {
+                    const qId = block.getAttribute('data-id');
+                    const feedbackDiv = document.getElementById("feedback_p3_" + qId);
+                    const serverResult = serverMap[String(qId)];
+                    if (feedbackDiv && serverResult) {
+                        let choice = serverResult.chosen;
+                        if (choice === "Chưa chọn" || choice === "undefined" || !choice) {
+                            choice = `<span class="wrong" style="font-weight:bold;">CHƯA CHỌN</span>`;
+                        }
+                        feedbackDiv.innerHTML = `<p class="${serverResult.is_correct ? 'correct' : 'wrong'}" style="margin-top:12px;">${serverResult.is_correct ? '✓ Đúng' : '✗ Sai'} (Bạn nhập: ${choice} - Đáp án đúng: ${serverResult.dap_an_dung})</p><div class="explanation"><strong>Giải thích chi tiết Phần III:</strong> ${convertLaTeXToUnicode(serverResult.giai_chi_tiet)}</div>`;
+                    }
+                });
+
+                const resultBox = document.getElementById("resultBox");
+                if (resultBox) {
+                    resultBox.style.display = "block";
+                    resultBox.innerHTML = `
+                        <h3 style="margin: 0; color: var(--primary-color); font-size: 22px;">KẾT QUẢ BÀI THI CỦA BẠN</h3>
+                        <p style="font-size: 23px; margin: 12px 0; color: var(--accent-color); font-weight: bold;">TỔNG ĐIỂM QUY ĐỔI HỆ 10: <span style="font-size:30px;">${resultData.total_score}</span> / 10 điểm</p>
+                        <hr style="border:0; border-top:1px solid #cbd5e0; margin:12px 0;">
+                        <p style="font-size: 19px; margin: 5px 0; color: #4a5568;">💡 <strong>Thống kê ma trận số lượng câu làm được:</strong></p>
+                        <p style="font-size: 19px; margin: 5px 0 0 15px;">• <strong>Tổng số câu đã thực hiện làm:</strong> <span style="color:var(--accent-color); font-weight:bold;">${resultData.total_attempted}</span> / ${resultData.total_questions} câu toàn bài</p>
+                        <p style="font-size: 18px; margin: 5px 0 0 15px;">• Số câu trả lời đúng Phần I: <span class="correct">${resultData.score_p1}</span> câu</p>
+                        <p style="font-size: 18px; margin: 5px 0 0 15px;">• Số câu đúng tuyệt đối Phần II: <span class="correct">${resultData.score_p2}</span> câu</p>
+                        <p style="font-size: 18px; margin: 5px 0 0 15px;">• Số câu trả lời đúng Phần III: <span class="correct">${resultData.score_p3}</span> câu</p>
+                    `;
+                    resultBox.scrollIntoView({ behavior: 'smooth' });
+                }
+            })
+            .catch(error => console.error("Lỗi đồng bộ hệ thống:", error));
         };
 
-        let duration = 50 * 60; const timer = document.getElementById("timer");
-        setInterval(() => { let m = Math.floor(duration / 60), s = duration % 60; timer.textContent = "Thời gian: " + (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s; if (--duration < 0) { document.getElementById("quizForm").dispatchEvent(new Event('submit')); } }, 1000);
+        let duration = 50 * 60;
+        const timerElement = document.getElementById("timer");
+        const countdown = setInterval(() => {
+            let minutes = Math.floor(duration / 60); let seconds = duration % 60;
+            timerElement.textContent = "Thời gian: " + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            if (--duration < 0) { clearInterval(countdown); alert("Hết giờ làm bài!"); document.getElementById("quizForm").dispatchEvent(new Event('submit')); }
+        }, 1000);
     </script>
     {% endraw %}
 </body>
