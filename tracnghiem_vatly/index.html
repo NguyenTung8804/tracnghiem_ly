@@ -70,19 +70,35 @@
 
                 <!-- PHẦN I -->
                 {% if q.cac_lua_chon != "Đúng, Sai" and "Điền số" not in q.cac_lua_chon|string %}
-                    <div class="question-block" data-type="Phan1" data-id="{{ q.id }}">
-                        <div class="question-text render-math-node"><strong>Câu {{ loop.index }}:</strong> {{ q.noi_dung|safe }}</div>
-                        {% set raw_txt = q.cac_lua_chon | string | replace("[[", "") | replace("]]", "") | replace("['", "") | replace("']", "") | replace('["', '') | replace('"]', '') | replace("[", "") | replace("]", "") | replace("'", "") | replace('"', '') | replace("\\\\", "\\") %}
-                        {% set arr_options = raw_txt.split(',') %}
-                        <div class="options-container" style="margin-top: 15px;">
-                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="A"> <strong>A.</strong> &nbsp; <span class="render-math-node">{{ arr_options[0] | trim | safe }}</span></label>
-                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="B"> <strong>B.</strong> &nbsp; <span class="render-math-node">{{ arr_options[1] | trim | safe }}</span></label>
-                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="C"> <strong>C.</strong> &nbsp; <span class="render-math-node">{{ arr_options[2] | trim | safe }}</span></label>
-                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="D"> <strong>D.</strong> &nbsp; <span class="render-math-node">{{ arr_options[3] | trim | safe }}</span></label>
-                        </div>
-                        <div id="feedback_p1_{{ q.id }}"></div>
-                    </div>
-                {% endif %}
+{% if q.cac_lua_chon != "Đúng, Sai" and "Điền số" not in q.cac_lua_chon|string %}
+    <div class="question-block" data-type="Phan1" data-id="{{ q.id }}">
+        <div class="question-text render-math-node"><strong>Câu {{ loop.index }}:</strong> {{ q.noi_dung|safe }}</div>
+        
+        {# 🌟 ĐỒNG BỘ TỐI CAO: Tự động phân tách thông minh bất kể môi trường Online hay Offline #}
+        {% if q.cac_lua_chon is string %}
+            {% set choices_list = q.cac_lua_chon.split(',') %}
+        {% else %}
+            {% set choices_list = q.cac_lua_chon %}
+        {% endif %}
+        
+        <div class="options-container" style="margin-top: 15px;">
+            <label class="option-item">
+                <input type="radio" name="p1_{{ q.id }}" value="A"> <strong>A.</strong>&nbsp;<span class="render-math-node">{{ choices_list[0]|trim|safe if choices_list[0] is defined else '' }}</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="p1_{{ q.id }}" value="B"> <strong>B.</strong>&nbsp;<span class="render-math-node">{{ choices_list[1]|trim|safe if choices_list[1] is defined else '' }}</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="p1_{{ q.id }}" value="C"> <strong>C.</strong>&nbsp;<span class="render-math-node">{{ choices_list[2]|trim|safe if choices_list[2] is defined else '' }}</span>
+            </label>
+            <label class="option-item">
+                <input type="radio" name="p1_{{ q.id }}" value="D"> <strong>D.</strong>&nbsp;<span class="render-math-node">{{ choices_list[3]|trim|safe if choices_list[3] is defined else '' }}</span>
+            </label>
+        </div>
+        <div id="feedback_p1_{{ q.id }}"></div>
+    </div>
+{% endif %}
+
 
                 <!-- PHẦN II -->
                 {% if q.cac_lua_chon == "Đúng, Sai" %}
