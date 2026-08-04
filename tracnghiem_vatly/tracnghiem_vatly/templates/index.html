@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đề Số {{ de_so }} - Vietdragon Learning Center</title>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']], processEscapes: true },
+            showProcessingMessages: false, messageStyle: "none"
+        });
+    </script>
+    <style>
+        :root { --primary-color: #1a365d; --accent-color: #2b6cb0; --text-color: #2d3748; --bg-color: #f7fafc; }
+        body { font-family: "Times New Roman", serif; font-size: 19px; line-height: 1.6; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
+        .navbar { background-color: var(--primary-color); color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .navbar .brand { font-size: 22px; font-weight: bold; }
+        .timer-badge { background-color: #e53e3e; color: white; padding: 8px 16px; font-size: 20px; font-weight: bold; border-radius: 20px; }
+        .container { max-width: 900px; margin: 40px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .header-title { text-align: center; border-bottom: 2px dashed #cbd5e0; padding-bottom: 25px; margin-bottom: 35px; }
+        .header-title h2 { margin: 0; color: var(--primary-color); font-size: 26px; }
+        .section-header { background: #e2e8f0; color: var(--primary-color); padding: 10px 15px; font-weight: bold; font-size: 20px; margin: 30px 0 15px 0; border-left: 6px solid var(--accent-color); border-radius: 4px; }
+        .context-box { background-color: #fffaf0; border-left: 4px solid #dd6b20; padding: 15px 20px; margin-bottom: 20px; border-radius: 4px; border-top: 1px solid #fbd38d; border-right: 1px solid #fbd38d; border-bottom: 1px solid #fbd38d; }
+        .context-title { font-weight: bold; color: #dd6b20; margin-bottom: 8px; font-style: italic; }
+        .question-block { background: #fff; padding: 20px; margin-bottom: 30px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .options-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .option-item { display: flex; align-items: center; padding: 10px 15px; border: 1px solid #edf2f7; border-radius: 6px; cursor: pointer; }
+        .option-item input { margin-right: 12px; transform: scale(1.2); }
+        .tf-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 18px; }
+        .tf-table th, .tf-table td { border: 1px solid #cbd5e0; padding: 10px 12px; text-align: left; }
+        .tf-table th { background-color: #f7fafc; color: var(--primary-color); text-align: center; }
+        .input-short-answer { width: 200px; padding: 10px 15px; font-family: "Times New Roman"; font-size: 18px; border: 2px solid #cbd5e0; border-radius: 6px; margin-top: 12px; outline: none; transition: border-color 0.2s; }
+        .input-short-answer:focus { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(43,108,176,0.1); }
+        .btn-submit { display: block; width: 100%; font-family: "Times New Roman"; font-size: 20px; font-weight: bold; padding: 15px; background-color: var(--accent-color); color: white; border: none; border-radius: 8px; cursor: pointer; }
+        .result-box { margin-top: 35px; padding: 25px; background-color: #ebf8ff; border-left: 5px solid var(--accent-color); border-radius: 6px; display: none; }
+        .explanation { margin-top: 15px; padding: 15px; background-color: #fffaf0; border-radius: 6px; font-style: italic; border-left: 4px solid #dd6b20; }
+        .correct { color: #38a169; font-weight: bold; }
+        .wrong { color: #e53e3e; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">VIETDRAGON LEARNING CENTER</div>
+        <div class="timer-badge" id="timer">Thời gian: 50:00</div>
+    </div>
+    <div class="container">
+        <div class="header-title">
+            <h2>HỆ THỐNG THI TRẮC NGHIỆM VẬT LÝ ONLINE</h2>
+            <h3 style="color: var(--accent-color); margin: 5px 0;">MÔN: VẬT LÝ - ĐỀ SỐ {{ de_so }}</h3>
+            <p>Thời gian làm bài: 50 phút | Định dạng chuẩn cấu trúc 3 phần mới nhất của Bộ Giáo dục</p>
+        </div>
+        <form id="quizForm">
+            {% set vars = {'has_p1': false, 'has_p2': false, 'has_p3': false, 'last_printed_p2_id': 0} %}
+            {% for q in questions %}
+                
+                {% if q.cac_lua_chon != "Đúng, Sai" and "Điền số" not in q.cac_lua_chon|string and not vars.has_p1 %}
+                    <div class="section-header">PHẦN I. Câu hỏi trắc nghiệm nhiều phương án lựa chọn</div>
+                    {% if vars.update({'has_p1': true}) %}{% endif %}
+                {% elif q.cac_lua_chon == "Đúng, Sai" and not vars.has_p2 %}
+                    <div class="section-header">PHẦN II. Câu hỏi trắc nghiệm Đúng/Sai</div>
+                    {% if vars.update({'has_p2': true}) %}{% endif %}
+                {% elif "Điền số" in q.cac_lua_chon|string and not vars.has_p3 %}
+                    <div class="section-header">PHẦN III. Câu hỏi trắc nghiệm trả lời ngắn</div>
+                    {% if vars.update({'has_p3': true}) %}{% endif %}
+                {% endif %}
+
+                {% if "Điền số" in q.cac_lua_chon|string and q.noi_dung.strip() != "" %}
+                    {% if '<br><br>' in q.noi_dung %}
+                        {% set total_sub = q.cac_lua_chon.split(',')|last|int if ',' in q.cac_lua_chon|string else 1 %}
+                        <div class="context-box">
+                            <div class="context-title">Nội dung câu {{ loop.index }} và {{ loop.index + total_sub - 1 }}:</div>
+                            {% set lead_part = q.noi_dung.split('<br><br>')|first %}
+                            <div>{{ lead_part | safe }}</div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <!-- PHẦN I: Gọi mảng lai tự nhận diện chuỗi hoặc mảng Array -->
+                {% if q.cac_lua_chon != "Đúng, Sai" and "Điền số" not in q.cac_lua_chon|string %}
+                    <div class="question-block" data-type="Phan1" data-id="{{ q.id }}">
+                        <div class="question-text"><strong>Câu {{ loop.index }}:</strong> {{ q.noi_dung|safe }}</div>
+                        {% set arr_options = q.cac_lua_chon.split(',') if q.cac_lua_chon is string else q.cac_lua_chon %}
+                        <div class="options-container" style="margin-top: 15px;">
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="A"> <strong>A.</strong> &nbsp; {{ arr_options[0]|safe if arr_options[0] is defined else "" }}</label>
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="B"> <strong>B.</strong> &nbsp; {{ arr_options[1]|safe if arr_options[1] is defined else "" }}</label>
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="C"> <strong>C.</strong> &nbsp; {{ arr_options[2]|safe if arr_options[2] is defined else "" }}</label>
+                            <label class="option-item"><input type="radio" name="p1_{{ q.id }}" value="D"> <strong>D.</strong> &nbsp; {{ arr_options[3]|safe if arr_options[3] is defined else "" }}</label>
+                        </div>
+                        <div id="feedback_p1_{{ q.id }}"></div>
+                    </div>
+                {% endif %}
+                <!-- PHẦN II: Thuật toán tách phát biểu Đúng/Sai mượt mà ổn định -->
+                {% if q.cac_lua_chon == "Đúng, Sai" %}
+                    {% if q.id != vars.last_printed_p2_id %}
+                        {% if vars.update({'last_printed_p2_id': q.id}) %}{% endif %}
+                        {% set full_text = q.noi_dung | string %}
+                        {% set full_text = full_text | replace("[[", "") | replace("]]", "") | replace("['", "") | replace("']", "") | replace('["', '') | replace('"]', '') %}
+                        {% set part_lead = full_text.split('a)') if 'a)' in full_text else [full_text, ""] %}
+                        {% set rem = part_lead[1] if part_lead[1] is defined else "" %}
+                        {% set part_a = rem.split('b)') if 'b)' in rem else [rem, ""] %}
+                        {% set rem = part_a[1] if part_a[1] is defined else "" %}
+                        {% set part_b = rem.split('c)') if 'c)' in rem else [rem, ""] %}
+                        {% set rem = part_b[1] if part_b[1] is defined else "" %}
+                        {% set part_c = rem.split('d)') if 'd)' in rem else [rem, ""] %}
+                        {% set part_d = part_c[1] if part_c[1] is defined else "" %}
+                        <div class="question-block" data-type="Đúng, Sai" data-id="{{ q.id }}">
+                            <div class="question-text"><strong>Câu {{ loop.index }}:</strong> {{ part_lead[0] | safe }}</div>
+                            <table class="tf-table" style="margin-top: 20px;">
+                                <thead><tr><th>Phát biểu lựa chọn tương ứng phía trên</th><th style="width: 100px; text-align: center;">Đúng</th><th style="width: 100px; text-align: center;">Sai</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>a)</strong> {{ part_a[0] | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_a" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_a" value="S"></td></tr>
+                                    <tr><td><strong>b)</strong> {{ part_b[0] | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_b" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_b" value="S"></td></tr>
+                                    <tr><td><strong>c)</strong> {{ part_c[0] | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_c" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_c" value="S"></td></tr>
+                                    <tr><td><strong>d)</strong> {{ part_d | safe }}</td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_d" value="Đ"></td><td style="text-align: center;"><input type="radio" name="q_{{ q.id }}_d" value="S"></td></tr>
+                                </tbody>
+                            </table>
+                            <div id="feedback_p2_{{ q.id }}"></div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <!-- PHẦN III -->
+                {% if "Điền số" in q.cac_lua_chon|string %}
+                    <div class="question-block" data-type="Điền số" data-id="{{ q.id }}">
+                        <div class="question-text">
+                            <strong>Câu {{ loop.index }}:</strong>
+                            {% if '<br><br>' in q.noi_dung %}
+                                {% set sub_txt = q.noi_dung.split('<br><br>')|last %}
+                                {% set clean_sub = sub_txt | replace("Câu " ~ loop.index ~ ":", "") %}
+                                {% set clean_sub = clean_sub | replace("Câu " ~ (loop.index + 1) ~ ":", "") %}
+                                {% set clean_sub = clean_sub | replace("Câu " ~ (loop.index - 1) ~ ":", "") %}
+                                {{ clean_sub|safe }}
+                            {% else %}
+                                {% set clean_root = q.noi_dung | replace("Câu " ~ loop.index ~ ":", "") %}
+                                {{ clean_root|safe }}
+                            {% endif %}
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <input type="text" class="input-short-answer" data-p3-input="{{ q.id }}" placeholder="Nhập đáp số...">
+                        </div>
+                        <div id="feedback_p3_{{ q.id }}"></div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+            <button type="submit" class="btn-submit" style="margin-top: 30px;">NỘP BÀI THI</button>
+        </form>
+        <div class="result-box" id="resultBox"></div>
+    </div>
+    <input type="hidden" id="globalDeSo" value="{{ de_so }}">
+    {% raw %}
+    <script>
+        function convertLaTeXToUnicode(text) {
+            if (!text) return "Không có lời giải chi tiết.";
+            let uText = text.replace(/\$\$/g, '').replace(/\$/g, '');
+            uText = uText.replace(/\\Delta/g, 'Δ').replace(/\\lambda/g, 'λ').replace(/\\cdot/g, '·').replace(/\\approx/g, '≈').replace(/\\times/g, '×').replace(/\\_\{ph\^an\\\_r\^a\}/g, '_phân_rã').replace(/\\_\{đi\^en\}/g, '_điện').replace(/\\_\{0\}/g, '₀');
+            const superscriptMap = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻', '+': '⁺', ',': ',', '.': ',' };
+            uText = uText.replace(/\^\{([^}]+)\}/g, (match, p1) => { return p1.split('').map(char => superscriptMap[char] || char).join(''); });
+            return uText;
+        }
+
+        document.getElementById("quizForm").onsubmit = function (e) {
+            e.preventDefault(); 
+            
+            const submitBtn = document.querySelector(".btn-submit");
+            if (submitBtn) {
+                submitBtn.disabled = true; 
+                submitBtn.style.backgroundColor = "#a0aec0"; 
+                submitBtn.style.cursor = "not-allowed";      
+                submitBtn.innerHTML = "🔒 Bài thi đã được nộp thành công"; 
+            }
+
+            const allInputs = document.querySelectorAll("input[type='radio'], input[type='text']");
+            allInputs.forEach(input => { input.disabled = true; });
+
+            const batchAnswers = {};
+            const currentDeSo = parseInt(document.getElementById("globalDeSo").value) || 1;
+
+            const p1Blocks = document.querySelectorAll('.question-block[data-type="Phan1"]');
+            const p2Blocks = document.querySelectorAll('.question-block[data-type="Đúng, Sai"]');
+            const p3Blocks = document.querySelectorAll('.question-block[data-type="Điền số"]');
+
+            p1Blocks.forEach(block => {
+                const qId = block.getAttribute('data-id');
+                const selected = block.querySelector(`input[name="p1_${qId}"]:checked`);
+                batchAnswers[String(qId)] = selected ? selected.value.trim().toUpperCase() : "Chưa chọn";
+            });
+
+            p2Blocks.forEach(block => {
+                const qId = block.getAttribute('data-id');
+                ['a', 'b', 'c', 'd'].forEach(sub => {
+                    const selected = block.querySelector(`input[name="q_${qId}_${sub}"]:checked`);
+                    batchAnswers[`q_${qId}_${sub}`] = selected ? selected.value.trim().toUpperCase() : "Chưa chọn";
+                });
+            });
+
+            p3Blocks.forEach(block => {
+                const qId = block.getAttribute('data-id');
+                const inputField = block.querySelector(`[data-p3-input="${qId}"]`);
+                if (inputField && inputField.value.trim() !== "") {
+                    batchAnswers[String(qId)] = inputField.value.trim().replace(/,/g, '.');
+                } else {
+                    batchAnswers[String(qId)] = "Chưa chọn";
+                }
+            });
+
+            fetch("/api/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ answers: batchAnswers, de_so: currentDeSo })
+            })
+            .then(response => response.json())
+            .then(resultData => {
+                const serverMap = {};
+                resultData.details.forEach(item => { serverMap[String(item.id)] = item; });
+
+                p1Blocks.forEach(block => {
+                    const qId = block.getAttribute('data-id');
+                    const feedbackDiv = document.getElementById("feedback_p1_" + qId);
+                    const serverResult = serverMap[String(qId)];
+                    if (feedbackDiv && serverResult) {
+                        let choice = serverResult.chosen;
+                        if (choice === "Chưa chọn" || choice === "undefined" || !choice) {
+                            choice = `<span class="wrong" style="font-weight:bold;">CHƯA CHỌN</span>`;
+                        }
+                        feedbackDiv.innerHTML = `<p class="${serverResult.is_correct ? 'correct' : 'wrong'}" style="margin-top:12px;">${serverResult.is_correct ? '✓ Đúng' : '✗ Sai'} (Bạn chọn: ${choice} - Đáp án đúng: ${serverResult.dap_an_dung.toUpperCase()})</p><div class="explanation"><strong>Giải thích chi tiết Phần I:</strong> ${convertLaTeXToUnicode(serverResult.giai_chi_tiet)}</div>`;
+                    }
+                });
+
+                p2Blocks.forEach(block => {
+                    const qId = block.getAttribute('data-id');
+                    const feedbackDiv = document.getElementById("feedback_p2_" + qId);
+                    const serverResult = serverMap[String(qId)];
+                    if (feedbackDiv && serverResult) {
+                        const sub = serverResult.sub_feedback;
+                        let count = 0;
+                        ['a', 'b', 'c', 'd'].forEach(k => { if(sub[k].is_correct) count++; });
+                        let earned = count * 0.25;
+
+                        let html = `<div style="margin-top:15px; border-top:1px dashed #cbd5e0; padding-top:10px;">`;
+                        html += `<p class="${serverResult.is_correct ? 'correct' : 'wrong'}">${serverResult.is_correct ? '✓ Đúng hoàn toàn (+1.0 điểm)' : `✗ Có ý sai (Đúng ${count}/4 ý - Nhận: +${earned} điểm)`}</p><ul style="list-style-type: none; padding-left: 10px; margin-top: 5px;">`;
+                        ['a', 'b', 'c', 'd'].forEach(k => {
+                            let choice = sub[k].chosen;
+                            if (choice === "Chưa chọn" || choice === "undefined" || !choice) {
+                                choice = `<span class="wrong" style="font-weight:bold;">CHƯA CHỌN</span>`;
+                            }
+                            html += `<li>• Ý ${k}): <span class="${sub[k].is_correct ? 'correct' : 'wrong'}">${sub[k].is_correct ? '✓ Đúng' : '✗ Sai'}</span> (Bạn chọn: ${choice} - Đáp án đúng: <strong>${sub[k].correct}</strong>)</li>`;
+                        });
+                        html += `</ul><div class="explanation"><strong>Giải thích chi tiết Phần II:</strong> ${convertLaTeXToUnicode(serverResult.giai_chi_tiet)}</div></div>`;
+                        feedbackDiv.innerHTML = html;
+                    }
+                });
+
+                p3Blocks.forEach(block => {
+                    const qId = block.getAttribute('data-id');
+                    const feedbackDiv = document.getElementById("feedback_p3_" + qId);
+                    const serverResult = serverMap[String(qId)];
+                    if (feedbackDiv && serverResult) {
+                        let choice = serverResult.chosen;
+                        if (choice === "Chưa chọn" || choice === "undefined" || !choice) {
+                            choice = `<span class="wrong" style="font-weight:bold;">CHƯA CHỌN</span>`;
+                        }
+                        feedbackDiv.innerHTML = `<p class="${serverResult.is_correct ? 'correct' : 'wrong'}" style="margin-top:12px;">${serverResult.is_correct ? '✓ Đúng' : '✗ Sai'} (Bạn nhập: ${choice} - Đáp án đúng: ${serverResult.dap_an_dung})</p><div class="explanation"><strong>Giải thích chi tiết Phần III:</strong> ${convertLaTeXToUnicode(serverResult.giai_chi_tiet)}</div>`;
+                    }
+                });
+
+                const resultBox = document.getElementById("resultBox");
+                if (resultBox) {
+                    resultBox.style.display = "block";
+                    resultBox.innerHTML = `
+                        <h3 style="margin: 0; color: var(--primary-color); font-size: 22px;">KẾT QUẢ BÀI THI CỦA BẠN</h3>
+                        <p style="font-size: 23px; margin: 12px 0; color: var(--accent-color); font-weight: bold;">TỔNG ĐIỂM QUY ĐỔI HỆ 10: <span style="font-size:30px;">${resultData.total_score}</span> / 10 điểm</p>
+                        <hr style="border:0; border-top:1px solid #cbd5e0; margin:12px 0;">
+                        <p style="font-size: 19px; margin: 5px 0; color: #4a5568;">💡 <strong>Thống kê ma trận số lượng câu làm được:</strong></p>
+                        <p style="font-size: 19px; margin: 5px 0 0 15px;">• <strong>Tổng số câu đã thực hiện làm:</strong> <span style="color:var(--accent-color); font-weight:bold;">${resultData.total_attempted}</span> / ${resultData.total_questions} câu toàn bài</p>
+                        <p style="font-size: 18px; margin: 5px 0 0 15px;">• Số câu trả lời đúng Phần I: <span class="correct">${resultData.score_p1}</span> câu</p>
+                        <p style="font-size: 18px; margin: 5px 0 0 15px;">• Số câu đúng tuyệt đối Phần II: <span class="correct">${resultData.score_p2}</span> câu</p>
+                        <p style="font-size: 18px; margin: 5px 0 0 15px;">• Số câu trả lời đúng Phần III: <span class="correct">${resultData.score_p3}</span> câu</p>
+                    `;
+                    resultBox.scrollIntoView({ behavior: 'smooth' });
+                }
+            })
+            .catch(error => console.error("Lỗi đồng bộ hệ thống:", error));
+        };
+
+        let duration = 50 * 60;
+        const timerElement = document.getElementById("timer");
+        const countdown = setInterval(() => {
+            let minutes = Math.floor(duration / 60); let seconds = duration % 60;
+            timerElement.textContent = "Thời gian: " + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            if (--duration < 0) { clearInterval(countdown); alert("Hết giờ làm bài!"); document.getElementById("quizForm").dispatchEvent(new Event('submit')); }
+        }, 1000);
+    </script>
+    {% endraw %}
+</body>
+</html>
+
