@@ -12,7 +12,7 @@
         });
     </script>
     
-    <!-- SỬA LỖI HTTPS: Nạp link thư viện chuẩn bảo mật cao chống bị Chrome chặn trên Vercel -->
+    <!-- Khóa chặt link bảo mật HTTPS chống chặn dịch toán trên đám mây Vercel -->
     <script type="text/javascript" async 
         src="https://cloudflare.com">
     </script>
@@ -21,10 +21,13 @@
         :root { --primary-color: #1a365d; --accent-color: #2b6cb0; --text-color: #2d3748; --bg-color: #f7fafc; }
         body { font-family: "Times New Roman", serif; font-size: 19px; line-height: 1.6; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
         .navbar { background-color: var(--primary-color); color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .navbar .brand { font-size: 22px; font-weight: bold; }
+        .navbar .brand { font-size: 22px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
         
-        /* CSS Độc quyền: Hộp Tag hiển thị số phiên bản cập nhật trên thanh Navbar */
-        .version-badge { background-color: #dd6b20; color: white; padding: 4px 10px; font-family: monospace; font-size: 14px; font-weight: bold; border-radius: 4px; margin-left: 15px; border: 1px solid #fbd38d; display: inline-block; vertical-align: middle; }
+        /* CSS Nhãn phiên bản màu cam học thuật */
+        .version-badge { background-color: #dd6b20; color: white; padding: 4px 10px; font-family: monospace; font-size: 14px; font-weight: bold; border-radius: 4px; border: 1px solid #fbd38d; }
+        
+        /* CSS Mốc ngày giờ tạo code màu xanh bạc mint dịu mắt */
+        .timestamp-badge { background-color: #234e52; color: #e6fffa; padding: 4px 10px; font-family: monospace; font-size: 13px; font-weight: normal; border-radius: 4px; border: 1px solid #319795; }
         
         .timer-badge { background-color: #e53e3e; color: white; padding: 8px 16px; font-size: 20px; font-weight: bold; border-radius: 20px; }
         .container { max-width: 900px; margin: 40px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
@@ -43,14 +46,17 @@
     </style>
 </head>
 <body>
-    <!-- 🎯 ĐỊNH NGHĨA SỐ PHIÊN BẢN CẬP NHẬT TẠI Đ Y -->
-    {% set VERSION = "3.1.0" %}
+    <!-- 🎯 KHAI BÁO BIẾN PHIÊN BẢN VÀ NGÀY GIỜ TẠO CODE CHÍNH XÁC -->
+    {% set VERSION = "3.2.0" %}
+    {% set BUILD_TIME = "04/08/2026 17:03" %}
 
     <div class="navbar">
         <div class="brand">
-            VIETDRAGON LEARNING CENTER 
-            <!-- In trực tiếp số phiên bản cập nhật ra thanh Menu chính -->
+            <span>VIETDRAGON LEARNING CENTER</span> 
+            <!-- In nhãn phiên bản cập nhật -->
             <span class="version-badge">v{{ VERSION }}</span>
+            <!-- In trực tiếp mốc ngày giờ chính xác tạo code ra màn hình -->
+            <span class="timestamp-badge">📅 Built: {{ BUILD_TIME }}</span>
         </div>
         <div class="timer-badge" id="timer">Thời gian: 50:00</div>
     </div>
@@ -72,8 +78,8 @@
                     <div class="question-block" data-type="Phan1" data-id="{{ q.id }}">
                         <div class="question-text"><strong>Câu {{ loop.index }}:</strong> {{ q.noi_dung|safe }}</div>
                         
-                        <!-- SỬA LỖI RÃ CHỮ: Ép phẳng dẹt mọi cấu trúc List/String về chuỗi chuẩn trước khi split -->
-                        {% set raw_txt = q.cac_lua_chon | string | replace("[[", "") | replace("]]", "") | replace("['", "") | replace("']", "") | replace('["', '') | replace('"]', '') | replace("[", "") | replace("]", "") | replace("'", "") | replace('"', '') | replace("\\\\", "\\") %}
+                        <!-- Bộ dẹp rác ngoặc mảng chống vỡ chữ nát vụn khi lên Vercel online -->
+                        {% set raw_txt = q.cac_lua_chon | string | replace("[[", "") | replace("]]", "") | replace("[ '", "") | replace("['", "") | replace("']", "") | replace('["', '') | replace('"]', '') | replace("[", "") | replace("]", "") | replace("'", "") | replace('"', '') | replace("\\\\", "\\") %}
                         {% set arr_options = raw_txt.split(',') %}
                         
                         <div class="options-container" style="margin-top: 15px;">
