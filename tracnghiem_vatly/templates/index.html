@@ -2,84 +2,22 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Đề Số {{ de_so }} - Vietdragon Learning Center</title>
-    <script src="/static/MathJax.js"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ tex2jax: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true }, showProcessingMessages: false, messageStyle: "none" });
-    </script>
+    <title>KIỂM TRA BIÊN DỊCH VERCEL</title>
     <style>
-        :root { --primary-color: #1a365d; --accent-color: #2b6cb0; --text-color: #2d3748; --bg-color: #f7fafc; }
-        body { font-family: "Times New Roman", serif; font-size: 19px; line-height: 1.6; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
-        .navbar { background-color: var(--primary-color); color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .navbar .brand { font-size: 22px; font-weight: bold; }
-        .timer-badge { background-color: #e53e3e; color: white; padding: 8px 16px; font-size: 20px; font-weight: bold; border-radius: 20px; }
-        .container { max-width: 900px; margin: 40px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .header-title { text-align: center; border-bottom: 2px dashed #cbd5e0; padding-bottom: 25px; margin-bottom: 35px; }
-        .header-title h2 { margin: 0; color: var(--primary-color); font-size: 26px; }
-        .question-block { background: #fff; padding: 20px; margin-bottom: 30px; border-radius: 8px; border: 1px solid #e2e8f0; }
-        .options-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .option-item { display: flex; align-items: center; padding: 10px 15px; border: 1px solid #edf2f7; border-radius: 6px; cursor: pointer; }
-        .option-item input { margin-right: 12px; transform: scale(1.2); }
-        .btn-submit { display: block; width: 100%; font-family: "Times New Roman"; font-size: 20px; font-weight: bold; padding: 15px; background-color: var(--accent-color); color: white; border: none; border-radius: 8px; cursor: pointer; }
-        .btn-submit:disabled { background-color: #cbd5e0; cursor: not-allowed; }
-        .result-box { margin-top: 35px; padding: 25px; background-color: #ebf8ff; border-left: 5px solid var(--accent-color); border-radius: 6px; display: none; }
-        .explanation { margin-top: 15px; padding: 15px; background-color: #fffaf0; border-radius: 6px; font-style: italic; border-left: 4px solid #dd6b20; }
-        .correct { color: #38a169; font-weight: bold; }
-        .wrong { color: #e53e3e; font-weight: bold; }
+        body { font-family: "Times New Roman", serif; background-color: #f7fafc; padding: 5px; }
+        .check-box { background-color: #fefcbf; border: 3px dashed #dd6b20; padding: 30px; text-align: center; border-radius: 12px; max-width: 600px; margin: 50px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1 { color: #dd6b20; margin: 0 0 15px 0; font-size: 28px; }
+        p { font-size: 20px; color: #2d3748; line-height: 1.6; margin: 0; }
+        .time { font-family: monospace; font-weight: bold; background: #2d3748; color: #fff; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 15px; }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="brand">VIETDRAGON LEARNING CENTER</div>
-        <div class="timer-badge" id="timer">Thời gian: 50:00</div>
+
+    <div class="check-box">
+        <h1>🚀 KẾT QUẢ KIỂM TRA VERCEL</h1>
+        <p>Nếu bạn nhìn thấy bảng màu vàng này, chứng tỏ máy chủ Vercel <strong>ĐÃ BIÊN DỊCH THÀNH CÔNG</strong> file mới nhất!</p>
+        <div class="time">Mã kiểm tra phát hành lúc: 04/08/2026 18:48</div>
     </div>
-    <div class="container">
-        <div class="header-title">
-            <h2>ĐỀ THI TỐT NGHIỆP THPT NĂM 2026 (MÔ PHỎNG)</h2>
-            <h3 style="color: var(--accent-color); margin: 5px 0;">MÔN: VẬT LÝ - ĐỀ SỐ {{ de_so }}</h3>
-            <p>Thời gian làm bài: 50 phút | Ngân hàng đề cấu trúc chuẩn Bộ Giáo dục</p>
-        </div>
-        <form id="quizForm">
-            {% for q in questions %}
-            <div class="question-block">
-                <div class="question-text"><strong>Câu {{ loop.index }}:</strong> {{ q.noi_dung }}</div>
-                <div class="options-container">
-                    {% for option in q.cac_lua_chon %}
-                    <div class="option-item" onclick="this.querySelector('input').click()">
-                        <input type="radio" name="{{ q.id }}" value="{{ ['A','B','C','D'][loop.index0] }}" onclick="event.stopPropagation();">
-                        <label><strong>{{ ['A','B','C','D'][loop.index0] }}.</strong> {{ option }}</label>
-                    </div>
-                    {% endfor %}
-                </div>
-                <div id="feedback_{{ q.id }}"></div>
-            </div>
-            {% endfor %}
-            <button type="button" id="submitBtn" class="btn-submit" onclick="submitExam()">Nộp Bài & Xem Lời Giải Chi Tiết</button>
-        </form>
-        <div id="resultBox" class="result-box">
-            <h3>KẾT QUẢ BÀI LÀM CỦA BẠN</h3>
-            <p id="scoreText" style="font-size: 22px; font-weight: bold; color: var(--primary-color);"></p>
-        </div>
-    </div>
-    <script>
-        let timeRemaining = 50 * 60; let timerInterval = setInterval(() => { if (timeRemaining <= 0) { clearInterval(timerInterval); submitExam(); } else { timeRemaining--; let min = Math.floor(timeRemaining/60); let sec = timeRemaining%60; document.getElementById('timer').innerText = `Thời gian: ${(min<10?'0':'')+min}:${(sec<10?'0':'')+sec}`; } }, 1000);
-        async function submitExam() {
-            clearInterval(timerInterval); document.getElementById('submitBtn').disabled = true;
-            document.querySelectorAll('input[type="radio"]').forEach(i => i.disabled = true);
-            const form = document.getElementById('quizForm'); const formData = new FormData(form); const answers = {};
-            formData.forEach((value, key) => { answers[key] = value; });
-            const response = await fetch('/api/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ answers: answers, de_so: {{ de_so }} }) });
-            const result = await response.json();
-            document.getElementById('resultBox').style.display = 'block';
-            document.getElementById('scoreText').innerText = `Kết quả: Bạn đúng ${result.score} / ${result.total} câu!`;
-            result.details.forEach(item => {
-                const div = document.getElementById(`feedback_${item.id}`);
-                div.innerHTML = `<p class="${item.is_correct ? 'correct' : 'wrong'}">${item.is_correct ? '✓ Đúng' : '✗ Sai'} (Bạn chọn: ${item.chosen} - Đáp án đúng: ${item.dap_an_dung})</p><div class="explanation"><strong>Giải thích:</strong> ${item.giai_chi_tiet}</div>`;
-            });
-            if (window.MathJax) { MathJax.Hub.Queue(["Typeset", MathJax.Hub]); }
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-    </script>
+
 </body>
 </html>
-
